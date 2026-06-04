@@ -1,0 +1,171 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Ann Yang Trading - Official Website</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    </head>
+    <body class="is-preload">
+        <div id="page-wrapper">
+
+            <header id="header">
+                    <h1 id="logo">
+                        <a href="index.html" style="display: inline-flex; align-items: center; text-decoration: none; padding-top: 0; padding-bottom: 0;">
+                            <img src="images/logo.png" alt="Ann Yang Trading Logo" style="height: 42px; width: auto; margin-right: 12px; display: block;" />
+                            <span style="vertical-align: middle;">Ann Yang Trading</span>
+                        </a>
+                    </h1>
+                    <nav id="nav">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li>
+                                <a href="#">Layouts</a>
+                                <ul>
+                                    <li><a href="left-sidebar.html">Left Sidebar</a></li>
+                                    <li><a href="right-sidebar.html">Right Sidebar</a></li>
+                                    <li><a href="no-sidebar.html" class="active">No Sidebar</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#about">About Us</a></li>
+                            <li><a href="#products">Products</a></li>
+                            <li><a href="#values">Core Values</a></li>
+                            <li style="color: #fff; font-weight: bold; padding-left: 1em;">📞 012-709 6951</li>
+                        </ul>
+                    </nav>
+                </header>
+
+            <div id="main" class="wrapper style1">
+                    <div class="container">
+                        <header class="major">
+                            <h2>Ann Yang Trading</h2>
+                            <p>Providing trusted business solutions and high-quality tree seedlings & flowers since 2001</p>
+                        </header>
+
+                        <section id="content">
+                                <a href="#" class="image fit"><img src="images/Image5.jpeg" alt="Ann Yang Trading Nursery Showroom" /></a>
+                                <p style="text-align: center; font-style: italic; margin-top: -1.5em; margin-bottom: 2.5em;">Rooted in Tradition · Branching into the Future</p>
+                                
+                                <div id="about" class="image right" style="max-width: 300px; width: 100%; position: relative; border-radius: 8px; overflow: hidden; height: 350px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); user-select: none;">
+                                    
+                                    <div class="mySlides" style="width: 100%; height: 100%; display: block;">
+                                        <img src="images/Image1.jpeg" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+                                    </div>
+
+                                    <div class="mySlides" style="width: 100%; height: 100%; display: none;">
+                                        <img src="images/Image2.jpeg" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+                                    </div>
+
+                                    <div class="mySlides" style="width: 100%; height: 100%; display: none;">
+                                        <img src="images/Image3.jpeg" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+                                    </div>
+
+                                    <button onclick="changeSlide(-1)" style="all: unset; cursor: pointer; position: absolute; top: 50%; left: 0; transform: translateY(-50%); padding: 12px 16px; color: white !important; font-weight: bold; font-size: 20px; background-color: rgba(0,0,0,0.5) !important; border-radius: 0 4px 4px 0; z-index: 10; box-shadow: none;">❮</button>
+                                    
+                                    <button onclick="changeSlide(1)" style="all: unset; cursor: pointer; position: absolute; top: 50%; right: 0; transform: translateY(-50%); padding: 12px 16px; color: white !important; font-weight: bold; font-size: 20px; background-color: rgba(0,0,0,0.5) !important; border-radius: 4px 0 0 4px; z-index: 10; box-shadow: none;">❯</button>
+
+                                </div>
+
+                                <script>
+                                    // 纯手动控制逻辑
+                                    let currentSlideIdx = 0;
+
+                                    function changeSlide(direction) {
+                                        let slides = document.getElementsByClassName("mySlides");
+                                        
+                                        // 隐藏当前显示的图片
+                                        slides[currentSlideIdx].style.display = "none";
+                                        
+                                        // 计算下一张图片的索引
+                                        currentSlideIdx += direction;
+                                        
+                                        // 边界处理：超过最后一张回到第一张，小于第一张去到最后一张
+                                        if (currentSlideIdx >= slides.length) {
+                                            currentSlideIdx = 0;
+                                        } else if (currentSlideIdx < 0) {
+                                            currentSlideIdx = slides.length - 1;
+                                        }
+                                        
+                                        // 显示新图片
+                                        slides[currentSlideIdx].style.display = "block";
+                                    }
+                                </script>
+
+                                <h3>About Our Company</h3>
+                                <p>Welcome to <strong>Ann Yang Trading</strong>. We believe that every successful enterprise and project begins with a rock-solid foundation. Since our establishment on <strong>5th April 2001</strong> in Batu Pahat, Johor, Ann Yang Trading has consistently adhered to the core philosophy of "Integrity First, Quality Supreme" within the trading and supply industry.</p>
+                                <p>With <strong>over 20 years of extensive industry experience</strong>, we have grown from a passionate startup serving Muar into a premium, deeply trusted business partner supplying tree seedlings and flowers across Kuala Lumpur, Johor Bahru, and southern Malaysia. We don't just supply exceptional horticultural products; we specialize in catering comprehensive supply chains and tailored solutions to help our local and international wholesale clients flourish.</p>
+                                <p>Our main cultivation hub is strategically nested at <strong>Lot 1748, PLT 59, Jln Kg Lubok Tengah Semerah, Batu Pahat</strong>. Utilizing the ideal micro-climate and natural shade provided under oil palm trees, our resilient seedlings are optimally shielded from harsh direct sunlight, resulting in healthier, premium quality stocks for nursery operators and landscaping projects.</p>
+
+                                <hr style="margin: 3em 0;" />
+
+                                <h3 id="products" style="text-align: center; margin-bottom: 1.5em;">Our Featured Showcase</h3>
+                                <p>We cultivate hundreds of varieties catering to small and large volume wholesale orders with robust bulk discounts. Our top-selling botanical species include:</p>
+                                <ul>
+                                    <li><strong>Alpinia purpurata</strong> (Elegant Red Ginger)</li>
+                                    <li><strong>Piper sarmentosum</strong> (Wild Betel Leaf)</li>
+                                    <li><strong>Pseuderanthemum 'golden'</strong> (Golden False Eranthemum)</li>
+                                    <li>Premium selections from the <strong>Euphorbiaceae</strong>, <strong>Polygonaceae</strong>, and <strong>Acanthaceae</strong> plant families.</li>
+                                </ul>
+
+                                <hr style="margin: 3em 0;" />
+
+                                <h3 id="values" style="text-align: center; margin-bottom: 0.5em;">Our Core Values</h3>
+                                <p style="text-align: center; font-style: italic; margin-bottom: 2.5em;">The guiding principles that steer our everyday business operations forward</p>
+                                
+                                <div class="row">
+                                    <div class="col-4 col-12-medium">
+                                        <h4 style="color: #4caf50;"><span class="icon solid fa-check-circle"></span> Quality</h4>
+                                        <p>Quality is our ultimate lifeline. From precise species selection under optimal shading to rigorous delivery workflows, we refuse to compromise, ensuring every seedling meets the highest standards.</p>
+                                    </div>
+                                    <div class="col-4 col-12-medium">
+                                        <h4 style="color: #2196f3;"><span class="icon solid fa-handshake"></span> Integrity</h4>
+                                        <p>With over two decades of wholesale market presence, we build long-term corporate relationships established on absolute honesty, transparent dealing, and reliable pricing commitments.</p>
+                                    </div>
+                                    <div class="col-4 col-12-medium">
+                                        <h4 style="color: #8bc34a;"><span class="icon solid fa-leaf"></span> Sustainability</h4>
+                                        <p>We care deeply about our ecosystem and future generations, actively promotions green initiatives, sustainable trade practices, and premium agricultural seedlings for a better tomorrow.</p>
+                                    </div>
+                                </div>
+
+                                <hr style="margin: 3em 0;" />
+
+                                <section style="text-align: center; background: rgba(0,0,0,0.02); padding: 3em; border-radius: 6px;">
+                                    <h3>Overcoming Geographical Gaps</h3>
+                                    <p>Whether you are a nursery operator, local landscape design firm, or an international import partner seeking premium agricultural supply from Malaysia, we are available to receive inquiries.</p>
+                                    <p><strong>No minimum order quantity required.</strong> Reach out today to receive custom tier pricing details!</p>
+                                    <br />
+                                    <p style="font-size: 1.5em; font-weight: bold; color: #444; margin-bottom: 0.5em;">
+                                        📞 Contact Number: <a href="tel:+60127096951" style="color: #2196f3; text-decoration: underline;">012-709 6951</a>
+                                    </p>
+                                    <p style="font-size: 1.1em; color: #555; font-weight: 500;">
+                                        📍 Location: Lot 1748, PLT 59, Jln Kg Lubok Tengah Semerah, 83600 Batu Pahat, Johor
+                                    </p>
+                                </section>
+
+                        </section>
+                    </div>
+                </div>
+
+            <footer id="footer">
+                    <ul class="copyright">
+                        <li>&copy; Ann Yang Trading. All rights reserved.</li>
+                        <li>Contact: 012-709 6951</li>
+                        <li>Location: Lot 1748, PLT 59, Jln Kg Lubok Tengah Semerah, 83600 Batu Pahat, Johor</li>
+                        <li>Design Context: UTHM BIC21003 / BIW20303 Project Team</li>
+                    </ul>
+                </footer>
+
+        </div>
+
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.scrolly.min.js"></script>
+        <script src="assets/js/jquery.dropotron.min.js"></script>
+        <script src="assets/js/jquery.scrollex.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+
+    </body>
+</html>
