@@ -13,12 +13,10 @@
         <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
         <style>
-            /* Smooth Scrolling for internal navigation links */
             html {
                 scroll-behavior: smooth;
             }
 
-            /* 1. WhatsApp Pulse Animation (Main Button) */
             @keyframes pulse-glow {
                 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
                 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
@@ -29,10 +27,9 @@
                 transition: transform 0.3s ease;
             }
             a.fa-whatsapp:hover {
-                transform: scale(1.05); /* Slight pop when hovered */
+                transform: scale(1.05);
             }
 
-            /* 2. Service Cards Hover Lift */
             #services .row > section {
                 transition: all 0.4s ease;
                 border: 1px solid transparent;
@@ -46,7 +43,6 @@
                 background-color: rgba(255, 255, 255, 0.05);
             }
 
-            /* 3. Cinematic Google Map */
             #contact iframe {
                 filter: grayscale(80%) contrast(1.2) opacity(0.8);
                 transition: all 0.6s ease;
@@ -56,7 +52,6 @@
                 box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3) !important;
             }
 
-            /* 4. Floating WhatsApp Button */
             .float-wa {
                 position: fixed;
                 width: 60px;
@@ -76,16 +71,13 @@
             .float-wa:hover {
                 transform: scale(1.1);
                 box-shadow: 0px 6px 20px rgba(37, 211, 102, 0.5);
-                animation: none; /* Disables the pulse on hover for the floating button */
+                animation: none;
             }
         </style>
     </head>
     <body class="is-preload landing">
         <div id="page-wrapper">
 
-            <!-- ============================================== -->
-            <!-- Navigation Bar 导航栏 (已修复链接为 homepage.html) -->
-            <!-- ============================================== -->
             <header id="header">
                 <h1 id="logo"><a href="homepage.html">Ann Yang Trading | Wholesale Seedlings & Flowers</a></h1>
                 <nav id="nav">
@@ -98,7 +90,6 @@
                     </ul>
                 </nav>
             </header>
-            <!-- ============================================== -->
 
             <section id="banner">
                 <div class="content">
@@ -145,6 +136,35 @@
                             </section>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            <section id="tracking" class="wrapper style3 special">
+                <div class="container">
+                    <header class="major">
+                        <h2>Track Your Order</h2>
+                        <p>Enter your Order ID to check the current real-time status.</p>
+                    </header>
+            
+                    <form onsubmit="event.preventDefault(); trackOrder();" style="max-width: 600px; margin: 0 auto;">
+                        <div class="row gtr-uniform">
+                            <div class="col-8 col-12-xsmall">
+                                <input type="text" name="orderId" id="orderId" placeholder="Enter Order ID (e.g. AYT-1001)" required />
+                            </div>
+                            <div class="col-4 col-12-xsmall">
+                                <ul class="actions">
+                                    <li><input type="submit" value="Check Status" class="primary" /></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </form>
+                    
+                    <div id="trackingResult" style="margin-top: 20px; font-size: 1.2em; min-height: 50px;"></div>
+            
+                    <br>
+                    <p style="font-size: 0.9em; color: #ccc;">
+                        Status flow: Pending ➔ Processing ➔ Ready for Pickup ➔ Completed
+                    </p>
                 </div>
             </section>
 
@@ -217,6 +237,29 @@
         <a href="https://wa.me/60123456789?text=Hello!%20I%20would%20like%20to%20inquire%20about%20your%20wholesale%20products." target="_blank" class="float-wa">
             <i class="icon brands fa-whatsapp"></i>
         </a>
+
+        <script>
+            function trackOrder() {
+                var orderId = document.getElementById("orderId").value.trim().toUpperCase();
+                var resultDiv = document.getElementById("trackingResult");
+        
+                var fakeDB = {
+                    "AYT-1001": { status: "Pending", color: "#f39c12", text: "Waiting for confirmation." },
+                    "AYT-1002": { status: "Processing", color: "#3498db", text: "We are preparing your items." },
+                    "AYT-1003": { status: "Ready for Pickup", color: "#9b59b6", text: "Your order is ready for pickup." },
+                    "AYT-1004": { status: "Completed", color: "#2ecc71", text: "Thank you for your purchase!" }
+                };
+        
+                if (fakeDB[orderId]) {
+                    var orderInfo = fakeDB[orderId];
+                    resultDiv.innerHTML = 
+                        "<span style='color:" + orderInfo.color + "; font-weight: bold;'>Status: " + orderInfo.status + "</span><br>" + 
+                        "<span style='font-size: 0.9em; color: #555;'>" + orderInfo.text + "</span>";
+                } else {
+                    resultDiv.innerHTML = "<span style='color: #e74c3c; font-weight: bold;'>Order Not Found.</span><br><span style='font-size: 0.9em; color: #555;'>Please check your Order ID.</span>";
+                }
+            }
+        </script>
 
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/jquery.scrolly.min.js"></script>
