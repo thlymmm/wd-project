@@ -68,26 +68,26 @@
                                 </div>
 
                                 <script>
-                                    // 纯手动控制逻辑
+                                   
                                     let currentSlideIdx = 0;
 
                                     function changeSlide(direction) {
                                         let slides = document.getElementsByClassName("mySlides");
                                         
-                                        // 隐藏当前显示的图片
+                                        
                                         slides[currentSlideIdx].style.display = "none";
                                         
-                                        // 计算下一张图片的索引
+                                        
                                         currentSlideIdx += direction;
                                         
-                                        // 边界处理：超过最后一张回到第一张，小于第一张去到最后一张
+                                       
                                         if (currentSlideIdx >= slides.length) {
                                             currentSlideIdx = 0;
                                         } else if (currentSlideIdx < 0) {
                                             currentSlideIdx = slides.length - 1;
                                         }
                                         
-                                        // 显示新图片
+                                       
                                         slides[currentSlideIdx].style.display = "block";
                                     }
                                 </script>
