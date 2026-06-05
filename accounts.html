@@ -11,6 +11,14 @@
 
         <style>
             html { scroll-behavior: smooth; }
+
+            #header {
+                position: sticky !important;
+                top: 0 !important;
+                z-index: 10000; 
+                background-color: #272833; 
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); 
+            }
             
             .auth-container {
                 max-width: 500px;
@@ -91,9 +99,9 @@
                         <li><a href="homepage.html">Home</a></li>
                         <li><a href="profile.html">Company Profile</a></li>
                         <li><a href="PLANT SPECIES.html">Product Catalog</a></li>
-                        <li><a href="service and contact.html#services">Services</a></li>
-                        <li><a href="#contact">Contact Us</a></li>
-                        <li><a href="login.html" class="button primary">Account</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="booking.html">Booking Now</a></li>
+                        <li><a href="accounts.html" id="nav-account-btn" class="button primary">Login / Register</a></li>
                     </ul>
                 </nav>
             </header>
@@ -163,35 +171,33 @@
                 </div>
             </section>
 
-            <footer style="padding: 0; margin: 0;">
-                <div id="contact" class="wrapper style2 fade" style="padding: 2.5em 0 1.5em 0 !important;">
+            <div style="display: flex; flex-direction: column;">
+                <section id="contact" class="wrapper style2 fade" style="padding: 3em 0 2.5em 0 !important; margin-bottom: 0 !important;">
                     <div class="container">
-                        <header class="major special" style="margin-bottom: 1em !important;">
-                            <h2>Contact Us</h2>
-                            <p>Get in touch for instant quotes or visit our physical store.</p>
+                        <header class="major special" style="margin-bottom: 2em !important;">
+                            <h2 style="font-size: 2.2em; margin-bottom: 0.2em;">Contact Us</h2>
+                            <p style="font-size: 1.1em; margin-bottom: 0;">Get in touch for instant quotes or visit our physical store.</p>
                         </header>
 
-                        <div class="row 150%">
+                        <div class="row">
                             <div class="col-6 col-12-medium">
-                                <ul class="alt" style="text-align: left; margin-bottom: 1em;">
-                                    <li style="padding: 0.5em 0;">
+                                <ul class="alt" style="text-align: left; margin-bottom: 1.5em;">
+                                    <li style="padding: 0.5em 0; font-size: 1.1em; line-height: 1.6;">
                                         <strong>📍 Physical Store Address:</strong><br>
-                                        Lot 1748, Plt 59,<br>
-                                        Jln Kg Lubok Tengah Semerah<br>
+                                        Lot 1748, Plt 59, Jln Kg Lubok Tengah Semerah<br>
                                         Batu Pahat, Johor, Malaysia
                                     </li>
-                                    <li style="padding: 0.5em 0;">
+                                    <li style="padding: 0.5em 0; font-size: 1.1em; line-height: 1.6;">
                                         <strong>🕒 Operating Hours:</strong><br>
-                                        Monday to Friday: 9:00 AM - 6:00 PM<br>
-                                        <em>(Closed on Weekends and Public Holidays)</em>
+                                        Monday to Friday: 9:00 AM - 6:00 PM
                                     </li>
                                 </ul>
-                                <ul class="actions" style="justify-content: flex-start;">
+                                <ul class="actions" style="justify-content: flex-start; margin-bottom: 0;">
                                     <li>
                                         <a href="https://wa.me/60123456789?text=Hello!%20I%20would%20like%20to%20inquire%20about%20your%20wholesale%20products." 
                                            target="_blank" 
                                            class="button primary icon brands fa-whatsapp" 
-                                           style="background-color: #25D366 !important; border: none !important; color: #ffffff !important; box-shadow: none !important;">
+                                           style="background-color: #25D366 !important; border: none !important; color: #ffffff !important; box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important; font-size: 1.05em; padding: 0.8em 1.5em; height: auto; line-height: 1.5; border-radius: 6px;">
                                            WhatsApp Quick Contact / Inquiry
                                         </a>
                                     </li>
@@ -203,8 +209,8 @@
                                     title="Google Maps Location for Ann Yang Trading in Batu Pahat"
                                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127608.06456094628!2d102.85590924999999!3d1.85489725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d04423b497b771%3A0xc638bbda892d34!2sBatu%20Pahat%2C%20Johor%2C%20Malaysia!5e0!3m2!1sen!2smy!4v1650000000000!5m2!1sen!2smy" 
                                     width="100%" 
-                                    height="250" 
-                                    style="border:0; border-radius: 5px;" 
+                                    height="280" 
+                                    style="border:0; border-radius: 8px; margin-top: 0.5em; box-shadow: 0 8px 20px rgba(0,0,0,0.15);" 
                                     allowfullscreen="" 
                                     loading="lazy" 
                                     referrerpolicy="no-referrer-when-downgrade">
@@ -212,9 +218,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </section>
 
-                <div id="footer">
+                <footer id="footer" style="padding-top: 3.5em !important; margin-top: 0 !important; background-color: #272833;">
                     <ul class="icons">
                         <li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
                         <li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
@@ -225,8 +231,8 @@
                     <ul class="copyright">
                         <li>© B2B Wholesale. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
                     </ul>
-                </div>
-            </footer>
+                </footer>
+            </div>
 
         </div>
 
@@ -304,8 +310,11 @@
                 var loginView = document.getElementById('login-view');
                 var registerView = document.getElementById('register-view');
                 var dashboardView = document.getElementById('dashboard-view');
+                var navBtn = document.getElementById('nav-account-btn');
 
                 if (activeUser) {
+                    if (navBtn) navBtn.innerText = "Account";
+
                     loginView.style.display = 'none';
                     registerView.style.display = 'none';
                     dashboardView.style.display = 'block';
@@ -326,6 +335,8 @@
                         document.getElementById('adminPanel').style.display = "none";
                     }
                 } else {
+                    if (navBtn) navBtn.innerText = "Login / Register";
+
                     dashboardView.style.display = 'none';
                     toggleView('login');
                 }
