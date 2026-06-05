@@ -1,0 +1,166 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Plant Booking System</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <style>
+            body {
+                background: #1e222b; 
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                padding: 2em;
+            }
+            .booking-container {
+                background: #242936;
+                padding: 2.5em;
+                border-radius: 8px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                max-width: 600px;
+                width: 100%;
+                border-top: 5px solid #34a58e; 
+            }
+            h2 {
+                color: #ffffff;
+                margin-bottom: 0.5em;
+                text-align: center;
+                font-weight: 400;
+                letter-spacing: 0.05em;
+            }
+            .subtitle {
+                color: #a0a0a1;
+                text-align: center;
+                font-size: 0.95em;
+                margin-bottom: 2.5em;
+            }
+            .form-group {
+                margin-bottom: 1.5em;
+            }
+            label {
+                display: block;
+                color: #ffffff;
+                margin-bottom: 0.5em;
+                font-size: 0.9em;
+                font-weight: 300;
+                letter-spacing: 0.05em;
+            }
+            input[type="text"], input[type="email"], input[type="date"], select {
+                width: 100%;
+                padding: 0.85em 1em;
+                background: #2d3345;
+                border: 1px solid #3d465d;
+                border-radius: 4px;
+                color: #ffffff;
+                font-size: 1em;
+                outline: none;
+                transition: border-color 0.3s, box-shadow 0.3s;
+            }
+            input:focus, select:focus {
+                border-color: #34a58e !important;
+                box-shadow: 0 0 8px rgba(52, 165, 142, 0.4);
+            }
+            input[type="date"]::-webkit-calendar-picker-indicator {
+                filter: invert(1);
+            }
+            .btn-submit {
+                background: #34a58e;
+                color: white !important;
+                width: 100%;
+                border: none;
+                padding: 1em;
+                font-size: 1.05em;
+                font-weight: 600;
+                border-radius: 4px;
+                cursor: pointer;
+                transition: background 0.3s;
+                margin-top: 1.5em;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+            }
+            .btn-submit:hover {
+                background: #47c5ab;
+                box-shadow: none;
+            }
+            .back-link {
+                display: block;
+                text-align: center;
+                margin-top: 2em;
+                color: #34a58e;
+                text-decoration: none;
+                font-size: 0.9em;
+                transition: color 0.3s;
+            }
+            .back-link:hover {
+                color: #47c5ab;
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="booking-container">
+            <h2>🌿 Book Your Plant</h2>
+            <p class="subtitle">Please provide your details below to place a reservation.</p>
+
+            <form id="plantBookingForm" onsubmit="handleBookingSubmit(event)">
+                
+                <div class="form-group">
+                    <label for="userName">Full Name</label>
+                    <input type="text" id="userName" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="userContact">Contact Number</label>
+                    <input type="text" id="userContact" placeholder="e.g., +6012345678" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="plantSelect">Select Plant Species</label>
+                    <select id="plantSelect" required>
+                        <option value="" disabled selected>-- Choose a plant species --</option>
+                        <option value="Antigonon Leptopus">Antigonon Leptopus</option>
+                        <option value="Coccoloba Uvifera">Coccoloba Uvifera</option>
+                        <option value="Persicaria Capitata">Persicaria Capitata</option>
+                        <option value="Fagopyrum Esculentum">Fagopyrum Esculentum</option>
+                        <option value="Homalocladium Platycladum">Homalocladium Platycladum</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="pickupDate">Expected Collection Date</label>
+                    <input type="date" id="pickupDate" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">Special Requirements / Notes (Optional)</label>
+                    <input type="text" id="notes" placeholder="e.g., specific sizes, custom planters, etc.">
+                </div>
+
+                <button type="submit" class="btn-submit">Confirm Reservation</button>
+            </form>
+
+            <a href="PLANT SPECIES.html" class="back-link">⬅ Back to Plant Gallery</a>
+        </div>
+
+        <script>
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('pickupDate').min = today;
+
+            function handleBookingSubmit(event) {
+                event.preventDefault();
+                
+                const name = document.getElementById('userName').value;
+                const plant = document.getElementById('plantSelect').value;
+                const date = document.getElementById('pickupDate').value;
+
+                alert(`Thank you, ${name}!\nYour reservation for [${plant}] has been received.\nPlease pick it up by ${date}.`);
+                
+                document.getElementById('plantBookingForm').reset();
+            }
+        </script>
+
+    </body>
+</html>
