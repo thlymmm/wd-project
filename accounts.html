@@ -1,0 +1,345 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <title>Account - Ann Yang Trading</title>
+        
+        <meta name="description" content="Login or register for Ann Yang Trading to manage your wholesale orders." />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+        <style>
+            html { scroll-behavior: smooth; }
+            
+            .auth-container {
+                max-width: 500px;
+                margin: 0 auto;
+                padding: 2.5em;
+                background-color: rgba(255, 255, 255, 0.05);
+                border-radius: 8px;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            }
+
+            .auth-container input, .auth-container select {
+                margin-bottom: 1.5em;
+            }
+
+            .auth-toggle-link {
+                color: #25D366;
+                cursor: pointer;
+                text-decoration: none;
+                font-weight: bold;
+            }
+            
+            .auth-toggle-link:hover {
+                text-decoration: underline;
+            }
+
+            .dashboard-card {
+                padding: 1.5em;
+                border-radius: 8px;
+                background-color: rgba(0, 0, 0, 0.2);
+                margin-bottom: 2em;
+            }
+
+            @keyframes pulse-glow {
+                0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+                70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+                100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+            }
+
+            .float-wa {
+                position: fixed;
+                width: 60px;
+                height: 60px;
+                bottom: 40px;
+                right: 40px;
+                background-color: #25D366;
+                color: #FFF !important;
+                border-radius: 50px;
+                text-align: center;
+                font-size: 30px;
+                box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+                z-index: 100;
+                line-height: 60px;
+                transition: all 0.3s ease;
+            }
+
+            .float-wa i {
+                animation: pulse-glow 2s infinite;
+            }
+
+            .float-wa:hover {
+                transform: scale(1.1);
+                box-shadow: 0px 6px 20px rgba(37, 211, 102, 0.5);
+            }
+
+            .float-wa:hover i {
+                animation: none;
+            }
+        </style>
+    </head>
+    <body class="is-preload landing">
+        <div id="page-wrapper">
+
+            <header id="header">
+                <h1 id="logo"><a href="homepage.html">Ann Yang Trading | Wholesale Seedlings & Flowers</a></h1>
+                <nav id="nav">
+                    <ul>
+                        <li><a href="homepage.html">Home</a></li>
+                        <li><a href="profile.html">Company Profile</a></li>
+                        <li><a href="PLANT SPECIES.html">Product Catalog</a></li>
+                        <li><a href="service and contact.html#services">Services</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="login.html" class="button primary">Account</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+            <section id="auth-section" class="wrapper style1 special fade-up" style="min-height: 80vh; display: flex; align-items: center;">
+                <div class="container">
+                    <header class="major">
+                        <h2 id="auth-title">Account Access</h2>
+                        <p id="auth-subtitle">Login or register to manage your orders and profile.</p>
+                    </header>
+
+                    <div class="auth-container">
+                        
+                        <div id="login-view">
+                            <form onsubmit="event.preventDefault(); handleLogin();">
+                                <input type="text" id="loginUsername" placeholder="Username" required />
+                                <input type="password" id="loginPassword" placeholder="Password" required />
+                                <div id="loginError" style="color: #e74c3c; margin-bottom: 1em; display: none;"></div>
+                                <ul class="actions special">
+                                    <li><input type="submit" value="Login" class="primary" style="width: 100%;" /></li>
+                                </ul>
+                            </form>
+                            <p style="margin-top: 1em; font-size: 0.9em;">
+                                Don't have an account? <span class="auth-toggle-link" onclick="toggleView('register')">Register here</span>
+                            </p>
+                        </div>
+
+                        <div id="register-view" style="display: none;">
+                            <form onsubmit="event.preventDefault(); handleRegister();">
+                                <input type="text" id="regUsername" placeholder="Choose a Username" required />
+                                <input type="password" id="regPassword" placeholder="Create a Password" required />
+                                <select id="regRole" required style="background-color: transparent; color: inherit;">
+                                    <option value="" disabled selected style="color: #000;">Select Role</option>
+                                    <option value="Customer" style="color: #000;">Customer</option>
+                                    <option value="Admin" style="color: #000;">System Admin</option>
+                                </select>
+                                <div id="regSuccess" style="color: #2ecc71; margin-bottom: 1em; display: none;">Registration Successful! You can now login.</div>
+                                <ul class="actions special">
+                                    <li><input type="submit" value="Register Account" class="primary" style="width: 100%; background-color: #2980b9;" /></li>
+                                </ul>
+                            </form>
+                            <p style="margin-top: 1em; font-size: 0.9em;">
+                                Already have an account? <span class="auth-toggle-link" onclick="toggleView('login')">Login here</span>
+                            </p>
+                        </div>
+
+                        <div id="dashboard-view" style="display: none; text-align: center;">
+                            <span class="icon solid major fa-user-circle" style="color: #25D366; font-size: 4em; margin-bottom: 0.5em;"></span>
+                            <h3 id="welcomeMsg" style="margin-bottom: 0.5em;">Welcome, User!</h3>
+                            <span id="roleBadge" style="display: inline-block; padding: 0.2em 1em; border-radius: 20px; font-size: 0.8em; font-weight: bold; margin-bottom: 1.5em; background-color: rgba(255,255,255,0.1);">Role</span>
+                            
+                            <div id="adminPanel" class="dashboard-card" style="display: none; border-left: 4px solid #e74c3c;">
+                                <h4>🛠️ Admin Controls</h4>
+                                <p style="font-size: 0.9em; margin: 0;">Access customer databases, manage inventory, and update order statuses here.</p>
+                            </div>
+                            <div id="customerPanel" class="dashboard-card" style="display: none; border-left: 4px solid #3498db;">
+                                <h4>📦 My Orders</h4>
+                                <p style="font-size: 0.9em; margin: 0;">View your past wholesale purchases, track current shipments, and re-order items.</p>
+                            </div>
+
+                            <ul class="actions special">
+                                <li><button onclick="handleLogout()" class="button" style="border: 1px solid #fff; color: #fff; background: transparent;">Logout</button></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <footer style="padding: 0; margin: 0;">
+                <div id="contact" class="wrapper style2 fade" style="padding: 2.5em 0 1.5em 0 !important;">
+                    <div class="container">
+                        <header class="major special" style="margin-bottom: 1em !important;">
+                            <h2>Contact Us</h2>
+                            <p>Get in touch for instant quotes or visit our physical store.</p>
+                        </header>
+
+                        <div class="row 150%">
+                            <div class="col-6 col-12-medium">
+                                <ul class="alt" style="text-align: left; margin-bottom: 1em;">
+                                    <li style="padding: 0.5em 0;">
+                                        <strong>📍 Physical Store Address:</strong><br>
+                                        Lot 1748, Plt 59,<br>
+                                        Jln Kg Lubok Tengah Semerah<br>
+                                        Batu Pahat, Johor, Malaysia
+                                    </li>
+                                    <li style="padding: 0.5em 0;">
+                                        <strong>🕒 Operating Hours:</strong><br>
+                                        Monday to Friday: 9:00 AM - 6:00 PM<br>
+                                        <em>(Closed on Weekends and Public Holidays)</em>
+                                    </li>
+                                </ul>
+                                <ul class="actions" style="justify-content: flex-start;">
+                                    <li>
+                                        <a href="https://wa.me/60123456789?text=Hello!%20I%20would%20like%20to%20inquire%20about%20your%20wholesale%20products." 
+                                           target="_blank" 
+                                           class="button primary icon brands fa-whatsapp" 
+                                           style="background-color: #25D366 !important; border: none !important; color: #ffffff !important; box-shadow: none !important;">
+                                           WhatsApp Quick Contact / Inquiry
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="col-6 col-12-medium">
+                                <iframe 
+                                    title="Google Maps Location for Ann Yang Trading in Batu Pahat"
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127608.06456094628!2d102.85590924999999!3d1.85489725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d04423b497b771%3A0xc638bbda892d34!2sBatu%20Pahat%2C%20Johor%2C%20Malaysia!5e0!3m2!1sen!2smy!4v1650000000000!5m2!1sen!2smy" 
+                                    width="100%" 
+                                    height="250" 
+                                    style="border:0; border-radius: 5px;" 
+                                    allowfullscreen="" 
+                                    loading="lazy" 
+                                    referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="footer">
+                    <ul class="icons">
+                        <li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+                        <li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+                        <li><a href="#" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+                        <li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+                        <li><a href="#" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
+                    </ul>
+                    <ul class="copyright">
+                        <li>© B2B Wholesale. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                    </ul>
+                </div>
+            </footer>
+
+        </div>
+
+        <a href="https://wa.me/60123456789?text=Hello!%20I%20would%20like%20to%20inquire%20about%20your%20wholesale%20products." target="_blank" class="float-wa">
+            <i class="icon brands fa-whatsapp"></i>
+        </a>
+
+        <script>
+            window.onload = function() {
+                checkLoginState();
+            };
+
+            function toggleView(viewName) {
+                document.getElementById('login-view').style.display = 'none';
+                document.getElementById('register-view').style.display = 'none';
+                document.getElementById('loginError').style.display = 'none';
+                document.getElementById('regSuccess').style.display = 'none';
+                
+                document.getElementById('auth-title').innerText = viewName === 'login' ? "Account Access" : "Create Account";
+                document.getElementById('auth-subtitle').innerText = viewName === 'login' ? "Login to manage your wholesale orders." : "Join us to get exclusive wholesale deals.";
+                
+                document.getElementById(viewName + '-view').style.display = 'block';
+            }
+
+            function handleRegister() {
+                var user = document.getElementById("regUsername").value.trim();
+                var pass = document.getElementById("regPassword").value;
+                var role = document.getElementById("regRole").value;
+
+                var fakeUsersDB = JSON.parse(localStorage.getItem("annYangUsers")) || {};
+
+                if(fakeUsersDB[user]) {
+                    alert("Username already exists! Please choose another one.");
+                    return;
+                }
+
+                fakeUsersDB[user] = { password: pass, role: role };
+                localStorage.setItem("annYangUsers", JSON.stringify(fakeUsersDB));
+
+                document.getElementById("regSuccess").style.display = "block";
+                document.getElementById("regUsername").value = "";
+                document.getElementById("regPassword").value = "";
+                document.getElementById("regRole").value = "";
+                
+                setTimeout(function() { toggleView('login'); }, 1500);
+            }
+
+            function handleLogin() {
+                var user = document.getElementById("loginUsername").value.trim();
+                var pass = document.getElementById("loginPassword").value;
+                var errorDiv = document.getElementById("loginError");
+
+                var fakeUsersDB = JSON.parse(localStorage.getItem("annYangUsers")) || {};
+
+                if (fakeUsersDB[user] && fakeUsersDB[user].password === pass) {
+                    var sessionData = { username: user, role: fakeUsersDB[user].role };
+                    sessionStorage.setItem("activeUser", JSON.stringify(sessionData));
+                    
+                    errorDiv.style.display = "none";
+                    checkLoginState(); 
+                } else {
+                    errorDiv.innerText = "Invalid username or password.";
+                    errorDiv.style.display = "block";
+                }
+            }
+
+            function handleLogout() {
+                sessionStorage.removeItem("activeUser");
+                document.getElementById("loginPassword").value = ""; 
+                checkLoginState();
+            }
+
+            function checkLoginState() {
+                var activeUser = JSON.parse(sessionStorage.getItem("activeUser"));
+                var loginView = document.getElementById('login-view');
+                var registerView = document.getElementById('register-view');
+                var dashboardView = document.getElementById('dashboard-view');
+
+                if (activeUser) {
+                    loginView.style.display = 'none';
+                    registerView.style.display = 'none';
+                    dashboardView.style.display = 'block';
+
+                    document.getElementById('auth-title').innerText = "Dashboard";
+                    document.getElementById('auth-subtitle').innerText = "Manage your account securely.";
+                    
+                    document.getElementById('welcomeMsg').innerText = "Welcome back, " + activeUser.username + "!";
+                    document.getElementById('roleBadge').innerText = activeUser.role;
+
+                    if (activeUser.role === "Admin") {
+                        document.getElementById('roleBadge').style.backgroundColor = "#e74c3c";
+                        document.getElementById('adminPanel').style.display = "block";
+                        document.getElementById('customerPanel').style.display = "none";
+                    } else {
+                        document.getElementById('roleBadge').style.backgroundColor = "#3498db";
+                        document.getElementById('customerPanel').style.display = "block";
+                        document.getElementById('adminPanel').style.display = "none";
+                    }
+                } else {
+                    dashboardView.style.display = 'none';
+                    toggleView('login');
+                }
+            }
+        </script>
+
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.scrolly.min.js"></script>
+        <script src="assets/js/jquery.dropotron.min.js"></script>
+        <script src="assets/js/jquery.scrollex.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+
+    </body>
+</html>
