@@ -17,9 +17,6 @@
                 scroll-behavior: smooth;
             }
 
-            /* ==========================================================================
-               🛠️ 刚性锁死 Header 容器，绝不跑位
-               ========================================================================== */
             #header {
                 position: sticky !important;
                 top: 0 !important;
@@ -36,9 +33,6 @@
                 padding: 0 2.5em !important;
             }
 
-            /* ==========================================================================
-               🖼️ Logo 图片与文字完美垂直居中对齐
-               ========================================================================== */
             #logo {
                 position: relative !important;
                 left: auto !important;
@@ -53,16 +47,16 @@
                 border: none !important;
                 font-weight: 600 !important;
                 display: flex !important;
-                align-items: center !important; /* 核心：让小树图片和文字在同一条水平线上 */
+                align-items: center !important;
                 text-decoration: none !important;
             }
 
             #logo img {
-                height: 42px !important;       /* 精准控制小树 Logo 的高度 */
-                width: auto !important;        /* 保持等比例 */
-                margin-right: 12px !important; /* 图片和右侧公司名字的间距 */
-                border-radius: 4px !important;  /* 微小圆角契合原本的方形复古感 */
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important; /* 加一点点暗色阴影 */
+                height: 42px !important;
+                width: auto !important;
+                margin-right: 12px !important;
+                border-radius: 4px !important;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
                 display: block !important;
             }
 
@@ -72,9 +66,6 @@
                 color: #ffffff !important;
             }
 
-            /* ==========================================================================
-               ✨ 完美暗黑系：一体式曜石黑胶囊舱导航栏
-               ========================================================================== */
             #nav {
                 position: relative !important;
                 right: auto !important;
@@ -86,7 +77,6 @@
                 padding: 0 !important;
             }
 
-            /* 曜石黑胶囊外壳 */
             #nav > ul {
                 display: flex !important;
                 flex-direction: row !important;
@@ -111,7 +101,6 @@
                 position: relative !important;
             }
 
-            /* 普通导航选项文字 */
             #nav > ul > li > a:not(.button) {
                 display: block !important;
                 padding: 0.6em 1.2em !important;           
@@ -128,7 +117,6 @@
                 transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
             }
 
-            /* 激活/悬浮：优雅暗翠绿滑块 */
             #nav > ul > li > a:not(.button):hover,
             #nav > ul > li.active > a:not(.button) {
                 color: #ffffff !important; 
@@ -136,7 +124,6 @@
                 box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
             }
 
-            /* 💄 按钮美化：高级暗梅子红 + 悬浮霓虹粉色微光 */
             #nav-account-btn.button.primary {
                 display: inline-block !important;
                 height: auto !important;
@@ -146,8 +133,6 @@
                 font-weight: 700 !important;
                 letter-spacing: 0.5px !important;
                 border-radius: 50px !important; 
-                
-                /* 默认状态：暗梅子红，完美融入曜石黑舱体 */
                 background-color: #7c2d3b !important; 
                 color: rgba(255, 255, 255, 0.9) !important;
                 border: 1px solid rgba(255, 105, 180, 0.15) !important;
@@ -156,7 +141,6 @@
                 margin-left: 0.3em !important;
             }
 
-            /* 悬浮状态：绽放柔和的粉红色氛围光晕 */
             #nav-account-btn.button.primary:hover {
                 background-color: #9c3a4a !important; 
                 color: #ffffff !important;
@@ -164,17 +148,18 @@
                 border-color: rgba(255, 182, 193, 0.6) !important;
                 transform: scale(1.02) !important;
             }
-            /* ========================================================================== */
 
             @keyframes pulse-glow {
                 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
                 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
                 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
             }
+
             a.fa-whatsapp {
                 animation: pulse-glow 2s infinite;
                 transition: transform 0.3s ease;
             }
+
             a.fa-whatsapp:hover {
                 transform: scale(1.05);
             }
@@ -185,6 +170,7 @@
                 border-radius: 8px;
                 padding: 1.5em;
             }
+
             #services .row > section:hover {
                 transform: translateY(-10px);
                 border-color: rgba(255, 255, 255, 0.2);
@@ -208,6 +194,7 @@
                 line-height: 60px;
                 transition: all 0.3s ease;
             }
+
             .float-wa:hover {
                 transform: scale(1.1);
                 box-shadow: 0px 6px 20px rgba(37, 211, 102, 0.5);
@@ -297,12 +284,12 @@
                             <div class="col-6 col-12-medium">
                                 <ul class="alt" style="text-align: left; margin-bottom: 1.5em;">
                                     <li style="padding: 0.5em 0; font-size: 1.1em; line-height: 1.6;">
-                                        <strong>📍 Physical Store Address:</strong><br>
+                                        <strong>ðŸ“ Physical Store Address:</strong><br>
                                         Lot 1748, Plt 59, Jln Kg Lubok Tengah Semerah<br>
                                         Batu Pahat, Johor, Malaysia
                                     </li>
                                     <li style="padding: 0.5em 0; font-size: 1.1em; line-height: 1.6;">
-                                        <strong>🕒 Operating Hours:</strong><br>
+                                        <strong>ðŸ•’ Operating Hours:</strong><br>
                                         Monday to Friday: 9:00 AM - 6:00 PM
                                     </li>
                                 </ul>
@@ -343,7 +330,7 @@
                         <li><a href="#" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
                     </ul>
                     <ul class="copyright">
-                        <li>© B2B Wholesale. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                        <li>Â© B2B Wholesale. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
                     </ul>
                 </footer>
             </div>

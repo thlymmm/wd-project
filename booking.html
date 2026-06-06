@@ -87,19 +87,166 @@
     <body class="is-preload landing">
         <div id="page-wrapper">
 
-            <header id="header">
-                <h1 id="logo"><a href="homepage.html">Ann Yang Trading | Wholesale Seedlings & Flowers</a></h1>
-                <nav id="nav">
-                    <ul>
-                        <li><a href="homepage.html">Home</a></li>
-                        <li><a href="profile.html">Company Profile</a></li>
-                        <li><a href="PLANT SPECIES.html">Product Catalog</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="booking.html">Booking Now</a></li>
-                        <li><a href="accounts.html" id="nav-account-btn" class="button primary">Account</a></li>
-                    </ul>
-                </nav>
-            </header>
+   <style>
+    #header {
+        position: sticky !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        z-index: 10000 !important;
+        background-color: #272833 !important;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6) !important;
+        height: 5em !important;
+        line-height: 5em !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        padding: 0 2.5em !important;
+    }
+
+    #logo {
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+        margin: 0 !important;
+        height: auto !important;
+        line-height: normal !important;
+        display: block !important;
+    }
+
+    #logo a {
+        border: none !important;
+        font-weight: 600 !important;
+        display: flex !important;
+        align-items: center !important;
+        text-decoration: none !important;
+    }
+
+    #logo img {
+        height: 42px !important;
+        width: auto !important;
+        margin-right: 12px !important;
+        border-radius: 4px !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
+        display: block !important;
+    }
+
+    #logo span {
+        display: inline-block !important;
+        font-size: 1em !important;
+        color: #ffffff !important;
+    }
+
+    #nav {
+        position: relative !important;
+        right: auto !important;
+        top: auto !important;
+        height: auto !important;
+        line-height: normal !important;
+        display: block !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    #nav > ul {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        background-color: #1b1c23 !important;
+        padding: 0.35em 0.6em !important;
+        border-radius: 50px !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+        margin: 0 !important;
+        list-style: none !important;
+        height: auto !important;
+    }
+
+    #nav > ul > li {
+        float: none !important;
+        display: block !important;
+        padding: 0 !important;
+        margin: 0 0.25em !important;
+        height: auto !important;
+        line-height: normal !important;
+        position: relative !important;
+    }
+
+    #nav > ul > li > a:not(.button) {
+        display: block !important;
+        padding: 0.6em 1.2em !important;
+        color: rgba(255, 255, 255, 0.65) !important;
+        font-size: 0.85em !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.5px !important;
+        text-decoration: none !important;
+        border: none !important;
+        border-radius: 50px !important;
+        background: transparent !important;
+        height: auto !important;
+        line-height: normal !important;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+
+    #nav > ul > li > a:not(.button):hover,
+    #nav > ul > li.active > a:not(.button) {
+        color: #ffffff !important;
+        background-color: #2e5c3a !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+    }
+
+    #nav-account-btn.button.primary {
+        display: inline-block !important;
+        height: auto !important;
+        line-height: normal !important;
+        padding: 0.6em 1.4em !important;
+        font-size: 0.85em !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.5px !important;
+        border-radius: 50px !important;
+        background-color: #7c2d3b !important;
+        color: rgba(255, 255, 255, 0.9) !important;
+        border: 1px solid rgba(255, 105, 180, 0.15) !important;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) !important;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        margin-left: 0.3em !important;
+    }
+
+    #nav-account-btn.button.primary:hover {
+        background-color: #9c3a4a !important;
+        color: #ffffff !important;
+        box-shadow: 0 0 15px rgba(228, 76, 101, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+        border-color: rgba(255, 182, 193, 0.6) !important;
+        transform: scale(1.02) !important;
+    }
+
+    #nav > ul > li.active > #nav-account-btn.button.primary {
+        background-color: #2e5c3a !important;
+        color: #ffffff !important;
+        border-color: rgba(255, 255, 255, 0.15) !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+    }
+</style>
+
+<header id="header">
+    <h1 id="logo">
+        <a href="homepage.html">
+            <img src="images/logo.png" alt="Ann Yang Trading Logo" />
+            <span>Ann Yang Trading | Wholesale Seedlings & Flowers</span>
+        </a>
+    </h1>
+
+    <nav id="nav">
+        <ul>
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="profile.html">Company Profile</a></li>
+            <li><a href="PLANT SPECIES.html">Product Catalog</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li class="active"><a href="booking.html">Booking Now</a></li>
+            <li><a href="accounts.html" id="nav-account-btn" class="button primary">Login / Register</a></li>
+        </ul>
+    </nav>
+</header>
 
             <section class="wrapper style1 special fade-up" style="min-height: 80vh; padding-top: 4em;">
                 <div class="container">
@@ -119,20 +266,52 @@
                                     <input type="text" id="userContact" placeholder="e.g., +6012345678" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Select Plant Species</label>
+                                    <label for="plantSelect">Select Plant Species</label>
                                     <select id="plantSelect" required>
                                         <option value="" disabled selected>-- Choose a plant species --</option>
-                                        <optgroup label="🌸 EUPHORBIACEAE">
-                                            <option value="Euphorbia pulcherrima">Euphorbia pulcherrima (Poinsettia)</option>
-                                            <option value="Euphorbia hirta">Euphorbia hirta</option>
+                                        <optgroup label="🌸 EUPHORBIACEAE FAMILY">
+                                        <option value="Euphorbia pulcherrima (Poinsettia)">Euphorbia pulcherrima (Poinsettia)</option>
+                                        <option value="Euphorbia hirta">Euphorbia hirta</option>
+                                        <option value="Manihot esculenta (Cassava)">Manihot esculenta (Cassava)</option>
+                                        <option value="Hippomane mancinella (Manchineel)">Hippomane mancinella (Manchineel)</option>
+                                        <option value="Jatropha curcas">Jatropha curcas</option>
+                                        <option value="Acalypha wilkesiana">Acalypha wilkesiana</option>
+                                        <option value="Jatropha podagrica">Jatropha podagrica</option>
+                                        <option value="Codiaeum variegatum">Codiaeum variegatum</option>
+                                        <option value="Euphorbia milii (Crown of Thorns)">Euphorbia milii (Crown of Thorns)</option>
                                         </optgroup>
-                                        <optgroup label="🌸 POLYGONACEAE">
-                                            <option value="Antigonon leptopus">Antigonon leptopus</option>
-                                            <option value="Persicaria capitata">Persicaria capitata</option>
+                                        <optgroup label="🌸 POLYGONACEAE FAMILY">
+                                        <option value="Antigonon leptopus">Antigonon leptopus</option>
+                                        <option value="Coccoloba uvifera">Coccoloba uvifera</option>
+                                        <option value="Persicaria capitata">Persicaria capitata</option>
+                                        <option value="Muehlenbeckia complexa">Muehlenbeckia complexa</option>
+                                        <option value="Fagopyrum esculentum">Fagopyrum esculentum</option>
+                                        <option value="Homalocladium platycladum">Homalocladium platycladum</option>
+                                        <option value="Rumex Acetosa">Rumex Acetosa</option>
+                                        <option value="Persicaria odorata">Persicaria odorata</option>
+                                        <option value="Persicaria hydropiper (Water Pepper)">Persicaria hydropiper (Water Pepper)</option>
+                                        </optgroup>
+                                        <optgroup label="🌸 ACANTHACEAE FAMILY">
+                                        <option value="Pseuderanthemum Carruthersii(Purple False Eranthemum)">Pseuderanthemum Carruthersii(Purple False Eranthemum)</option>
+                                        <option value="Aphelandra squarrosa (Zebra Plant)">Aphelandra squarrosa (Zebra Plant)</option>
+                                        <option value="Fittonia albivenis (Nerve Plant)">Fittonia albivenis (Nerve Plant)</option>
+                                        <option value="Acanthus mollis (Bear's Breeches)">Acanthus mollis (Bear's Breeches)</option>            
+                                        <option value="Justicia carnea (Flamingo Flower)">Justicia carnea (Flamingo Flower)</option>
+                                        <option value="Thunbergia erecta (King's Mantle)">Thunbergia erecta (King's Mantle)</option>
+                                        <option value="Andrographis paniculata (King of Bitters)">Andrographis paniculata (King of Bitters)</option>
+                                        <option value="Asystasia gangetica (Chinese Violet)">Asystasia gangetica (Chinese Violet)</option>
+                                        <option value="Odontonema tubaeforme (Firespike)">Odontonema tubaeforme (Firespike)</option>
                                         </optgroup>
                                         <optgroup label="🌸 OTHER SPECIES">
-                                            <option value="Alpinia purpurata">Alpinia purpurata (Red Ginger)</option>
-                                            <option value="Dieffenbachia seguine">Dieffenbachia seguine</option>
+                                        <option value="Alpinia purpurata (Red Ginger)">Alpinia purpurata (Red Ginger)</option>
+                                        <option value="Pseuderanthemum ‘golden’ (Golden False Eranthemum)">Pseuderanthemum ‘golden’ (Golden False Eranthemum)</option>
+                                        <option value="Piper sarmentosum (Wild Betel Leaf)">Piper sarmentosum (Wild Betel Leaf)</option>
+                                        <option value="Dieffenbachia seguine">Dieffenbachia seguine</option>
+                                        <option value="Fragraea ceilanica">Fragraea ceilanica</option>
+                                        <option value="Calathea zebrina (Zebra Plant)">Calathea zebrina (Zebra Plant)</option>
+                                        <option value="Pisonia alba (Lettuce Tree)">Pisonia alba (Lettuce Tree)</option>
+                                        <option value="Spathoglottis Plicata(Large Purple Orchid)">Spathoglottis Plicata(Large Purple Orchid)</option>
+                                        <option value="Clerodendrum paniculatum (Pagoda Flower)">Clerodendrum paniculatum (Pagoda Flower)</option>   
                                         </optgroup>
                                     </select>
                                 </div>
