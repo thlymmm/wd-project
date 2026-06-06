@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>Plant Booking System</title>
+        <title>Plant Booking & Tracking System</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <link rel="stylesheet" href="assets/css/main.css" />
@@ -9,12 +9,14 @@
             body {
                 background: #1e222b; 
                 display: flex;
+                flex-direction: column;
                 justify-content: center;
                 align-items: center;
                 min-height: 100vh;
                 padding: 2em;
+                font-family: sans-serif;
             }
-            .booking-container {
+            .booking-container, .status-container {
                 background: #242936;
                 padding: 2.5em;
                 border-radius: 8px;
@@ -22,6 +24,10 @@
                 max-width: 600px;
                 width: 100%;
                 border-top: 5px solid #34a58e; 
+                margin-bottom: 2em;
+            }
+            .status-container {
+                border-top: 5px solid #2b84eb; 
             }
             h2 {
                 color: #ffffff;
@@ -47,7 +53,7 @@
                 font-weight: 300;
                 letter-spacing: 0.05em;
             }
-            input[type="text"], input[type="email"], input[type="date"], select {
+            input[type="text"], input[type="number"], input[type="date"], select {
                 width: 100%;
                 padding: 0.85em 1em;
                 background: #2d3345;
@@ -56,14 +62,27 @@
                 color: #ffffff;
                 font-size: 1em;
                 outline: none;
+                box-sizing: border-box;
                 transition: border-color 0.3s, box-shadow 0.3s;
+                line-height: 1.2;
+                height: auto;
             }
             input:focus, select:focus {
                 border-color: #34a58e !important;
                 box-shadow: 0 0 8px rgba(52, 165, 142, 0.4);
             }
+            .status-container input:focus {
+                border-color: #2b84eb !important;
+                box-shadow: 0 0 8px rgba(43, 132, 235, 0.4);
+            }
             input[type="date"]::-webkit-calendar-picker-indicator {
                 filter: invert(1);
+            }
+            .input-hint {
+                font-size: 0.8em;
+                color: #a0a0a1;
+                margin-top: 0.4em;
+                display: block;
             }
             .btn-submit {
                 background: #34a58e;
@@ -82,7 +101,23 @@
             }
             .btn-submit:hover {
                 background: #47c5ab;
-                box-shadow: none;
+            }
+            .btn-track {
+                background: #2b84eb;
+                color: white !important;
+                width: 100%;
+                border: none;
+                padding: 1em;
+                font-size: 1.05em;
+                font-weight: 600;
+                border-radius: 4px;
+                cursor: pointer;
+                transition: background 0.3s;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+            }
+            .btn-track:hover {
+                background: #4a9eff;
             }
             .back-link {
                 display: block;
@@ -97,6 +132,26 @@
                 color: #47c5ab;
                 text-decoration: underline;
             }
+            .result-box {
+                background: #2d3345;
+                border: 1px solid #3d465d;
+                padding: 1.5em;
+                border-radius: 6px;
+                margin-top: 1.5em;
+                color: #ffffff;
+            }
+            .status-badge {
+                display: inline-block;
+                padding: 0.25em 0.8em;
+                border-radius: 20px;
+                font-size: 0.85em;
+                font-weight: bold;
+                margin-bottom: 1em;
+            }
+            .status-pending { background: #e6a23c; color: #1e222b; }
+            .status-preparing { background: #2b84eb; color: #ffffff; }
+            .status-shipped { background: #67c23a; color: #1e222b; }
+            .status-cancelled { background: #909399; color: #ffffff; }
         </style>
     </head>
     <body>
@@ -106,7 +161,6 @@
             <p class="subtitle">Please provide your details below to place a reservation.</p>
 
             <form id="plantBookingForm" onsubmit="handleBookingSubmit(event)">
-                
                 <div class="form-group">
                     <label for="userName">Full Name</label>
                     <input type="text" id="userName" placeholder="Enter your full name" required>
@@ -114,32 +168,25 @@
 
                 <div class="form-group">
                     <label for="userContact">Contact Number</label>
-                    <input type="text" id="userContact" placeholder="e.g., +6012345678" required>
+                    <input type="text" id="userContact" pattern="[0-9+ \-]{9,15}" title="Please enter a valid phone number" placeholder="e.g., +6012345678" required>
                 </div>
 
                 <div class="form-group">
                     <label for="plantSelect">Select Plant Species</label>
                     <select id="plantSelect" required>
-                         <option value="" disabled selected>-- Choose a plant species --</option>
-                        <option value="Alpinia purpurata (Red Ginger)">Alpinia purpurata (Red Ginger)</option>
-                        <option value="Pseuderanthemum ‘golden’ (Golden False Eranthemum)">Pseuderanthemum ‘golden’ (Golden False Eranthemum)</option>
-                        <option value="Piper sarmentosum (Wild Betel Leaf)">Piper sarmentosum (Wild Betel Leaf)</option>
-                        <option value="Dieffenbachia seguine">Dieffenbachia seguine</option>
-                        <option value="Fragraea ceilanica">Fragraea ceilanica</option>
-                        <option value="Calathea zebrina (Zebra Plant)">Calathea zebrina (Zebra Plant)</option>
-                        <option value="Pisonia alba (Lettuce Tree）">Pisonia alba (Lettuce Tree）</option>
-                        <option value="Spathoglottis Plicata(Large Purple Orchid)">Spathoglottis Plicata(Large Purple Orchid)</option>
-                        <option value="Clerodendrum paniculatum (Pagoda Flower）">Clerodendrum paniculatum (Pagoda Flower）</option>
-                        
+                        <option value="" disabled selected>-- Choose a plant species --</option>
+                        <optgroup label="🌸 EUPHORBIACEAE FAMILY">
                         <option value="Euphorbia pulcherrima (Poinsettia)">Euphorbia pulcherrima (Poinsettia)</option>
                         <option value="Euphorbia hirta">Euphorbia hirta</option>
                         <option value="Manihot esculenta (Cassava)">Manihot esculenta (Cassava)</option>
+                        <option value="Hippomane mancinella (Manchineel)">Hippomane mancinella (Manchineel)</option>
                         <option value="Jatropha curcas">Jatropha curcas</option>
                         <option value="Acalypha wilkesiana">Acalypha wilkesiana</option>
                         <option value="Jatropha podagrica">Jatropha podagrica</option>
                         <option value="Codiaeum variegatum">Codiaeum variegatum</option>
                         <option value="Euphorbia milii (Crown of Thorns)">Euphorbia milii (Crown of Thorns)</option>
-
+                        </optgroup>
+                        <optgroup label="🌸 POLYGONACEAE FAMILY">
                         <option value="Antigonon leptopus">Antigonon leptopus</option>
                         <option value="Coccoloba uvifera">Coccoloba uvifera</option>
                         <option value="Persicaria capitata">Persicaria capitata</option>
@@ -148,53 +195,179 @@
                         <option value="Homalocladium platycladum">Homalocladium platycladum</option>
                         <option value="Rumex Acetosa">Rumex Acetosa</option>
                         <option value="Persicaria odorata">Persicaria odorata</option>
-                       <option value="Persicaria hydropiper (Water Pepper)">Persicaria hydropiper (Water Pepper)</option>
-
-                       <option value="Pseuderanthemum Carruthersii(Purple False Eranthemum)">Pseuderanthemum Carruthersii(Purple False Eranthemum)</option>
-                       <option value="Aphelandra squarrosa (Zebra Plant)">Aphelandra squarrosa (Zebra Plant)</option>
-                       <option value="Fittonia albivenis (Nerve Plant)">Fittonia albivenis (Nerve Plant)</option>
-                       <option value="Acanthus mollis (Bear's Breeches)">Acanthus mollis (Bear's Breeches)</option>            
-                       <option value="Justicia carnea (Flamingo Flower)">Justicia carnea (Flamingo Flower)</option>
-                       <option value="Thunbergia erecta (King's Mantle)">Thunbergia erecta (King's Mantle)</option>
-                       <option value="Andrographis paniculata (King of Bitters)">Andrographis paniculata (King of Bitters)</option>
-                       <option value="Asystasia gangetica (Chinese Violet)">Asystasia gangetica (Chinese Violet)</option>
-                       <option value="Odontonema tubaeforme (Firespike)">Odontonema tubaeforme (Firespike)</option>
-
+                        <option value="Persicaria hydropiper (Water Pepper)">Persicaria hydropiper (Water Pepper)</option>
+                        </optgroup>
+                        <optgroup label="🌸 ACANTHACEAE FAMILY">
+                        <option value="Pseuderanthemum Carruthersii(Purple False Eranthemum)">Pseuderanthemum Carruthersii(Purple False Eranthemum)</option>
+                        <option value="Aphelandra squarrosa (Zebra Plant)">Aphelandra squarrosa (Zebra Plant)</option>
+                        <option value="Fittonia albivenis (Nerve Plant)">Fittonia albivenis (Nerve Plant)</option>
+                        <option value="Acanthus mollis (Bear's Breeches)">Acanthus mollis (Bear's Breeches)</option>            
+                        <option value="Justicia carnea (Flamingo Flower)">Justicia carnea (Flamingo Flower)</option>
+                        <option value="Thunbergia erecta (King's Mantle)">Thunbergia erecta (King's Mantle)</option>
+                        <option value="Andrographis paniculata (King of Bitters)">Andrographis paniculata (King of Bitters)</option>
+                        <option value="Asystasia gangetica (Chinese Violet)">Asystasia gangetica (Chinese Violet)</option>
+                        <option value="Odontonema tubaeforme (Firespike)">Odontonema tubaeforme (Firespike)</option>
+                        </optgroup>
+                        <optgroup label="🌸 OTHER SPECIES">
+                        <option value="Alpinia purpurata (Red Ginger)">Alpinia purpurata (Red Ginger)</option>
+                        <option value="Pseuderanthemum ‘golden’ (Golden False Eranthemum)">Pseuderanthemum ‘golden’ (Golden False Eranthemum)</option>
+                        <option value="Piper sarmentosum (Wild Betel Leaf)">Piper sarmentosum (Wild Betel Leaf)</option>
+                        <option value="Dieffenbachia seguine">Dieffenbachia seguine</option>
+                        <option value="Fragraea ceilanica">Fragraea ceilanica</option>
+                        <option value="Calathea zebrina (Zebra Plant)">Calathea zebrina (Zebra Plant)</option>
+                        <option value="Pisonia alba (Lettuce Tree)">Pisonia alba (Lettuce Tree)</option>
+                        <option value="Spathoglottis Plicata(Large Purple Orchid)">Spathoglottis Plicata(Large Purple Orchid)</option>
+                        <option value="Clerodendrum paniculatum (Pagoda Flower)">Clerodendrum paniculatum (Pagoda Flower)</option>   
+                        </optgroup>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="pickupDate">Expected Collection Date</label>
-                    <input type="date" id="pickupDate" required>
+                    <label for="plantQty">Quantity (pcs)</label>
+                    <input type="number" id="plantQty" min="1" value="1" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="deliveryOption">Collection / Delivery Method</label>
+                    <select id="deliveryOption" onchange="toggleAddressField()" required>
+                        <option value="Self-Pickup">Self-Pickup (Batu Pahat Nursery Base)</option>
+                        <option value="Lorry Delivery (Within Johor State)">Lorry Delivery (Within Johor State)</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="addressFieldGroup" style="display: none;">
+                    <label for="deliveryAddress">Delivery Address</label>
+                    <input type="text" id="deliveryAddress" placeholder="Enter full delivery address">
+                </div>
+
+                <div class="form-group">
+                    <label for="pickupDate">Expected Date</label>
+                    <input type="date" id="pickupDate" onchange="validateDate()" required>
+                    <span class="input-hint">Operating Hours: Mon - Fri (Closed on Sat & Sun)</span>
                 </div>
 
                 <div class="form-group">
                     <label for="notes">Special Requirements / Notes (Optional)</label>
                     <input type="text" id="notes" placeholder="e.g., specific sizes, custom planters, etc.">
+                    <span class="input-hint">💡 Tip: Specify desired plant height (e.g., 2 feet) or polybag size here.</span>
                 </div>
 
                 <button type="submit" class="btn-submit">Confirm Reservation</button>
             </form>
-
-            <a href="PLANT SPECIES.html" class="back-link">⬅ Back to Plant Gallery</a>
         </div>
+
+        <div class="status-container">
+            <h2>🔍 Track Booking Status</h2>
+            <p class="subtitle">Enter your 4-digit booking code to track your order live.</p>
+            
+            <div class="form-group">
+                <label for="trackCodeInput">4-Digit Booking Code</label>
+                <input type="text" id="trackCodeInput" maxlength="4" placeholder="e.g., 1234">
+            </div>
+            
+            <button class="btn-track" onclick="trackBookingStatus()">Check Status</button>
+
+            <div id="trackingResult" class="result-box" style="display: none;">
+                <div id="statusBadge" class="status-badge">Pending Approval</div>
+                <p style="margin: 5px 0;"><strong>Customer:</strong> <span id="resName"></span></p>
+                <p style="margin: 5px 0;"><strong>Items Ordered:</strong> <span id="resPlant"></span> (<span id="resQty"></span> pcs)</p>
+                <p style="margin: 5px 0;"><strong>Method:</strong> <span id="resMethod"></span></p>
+                <p style="margin: 5px 0;"><strong>Target Date:</strong> <span id="resDate"></span></p>
+                <p style="margin-top: 10px; font-size: 0.9em; color: #a0a0a1; border-top: 1px solid #3d465d; padding-top: 8px;">
+                    💡 <em>Note: Our team will contact you shortly via phone call for scheduling details.</em>
+                </p>
+            </div>
+        </div>
+
+        <a href="PLANT SPECIES.html" class="back-link">⬅ Back to Plant Gallery</a>
 
         <script>
             const today = new Date().toISOString().split('T')[0];
             document.getElementById('pickupDate').min = today;
 
+            let bookingDatabase = {
+                "1111": { name: "Ali Abu", plant: "Dieffenbachia seguine", qty: "250", method: "Lorry Delivery (Within Johor State)", date: "2026-06-15", status: "Pending Approval" },
+                "2222": { name: "Tan Ah Kao", plant: "Alpinia purpurata (Red Ginger)", qty: "100", method: "Self-Pickup", date: "2026-06-18", status: "Preparing" },
+                "3333": { name: "Senthil Kumar", plant: "Euphorbia pulcherrima (Poinsettia)", qty: "500", method: "Lorry Delivery (Within Johor State)", date: "2026-06-10", status: "Shipped" },
+                "4444": { name: "John Doe", plant: "Codiaeum variegatum", qty: "30", method: "Self-Pickup", date: "2026-06-05", status: "Cancelled" }
+            };
+
+            // 日期防错：防止选到周六(6)和周日(0)
+            function validateDate() {
+                const dateInput = document.getElementById('pickupDate');
+                const dateValue = new Date(dateInput.value);
+                const day = dateValue.getUTCDay(); 
+
+                if (day === 6 || day === 0) {
+                    alert("Please note: The nursery is closed on Saturdays and Sundays. Please select a date from Monday to Friday.");
+                    dateInput.value = ""; 
+                }
+            }
+
+            function toggleAddressField() {
+                const deliveryOption = document.getElementById('deliveryOption').value;
+                const addressGroup = document.getElementById('addressFieldGroup');
+                const addressInput = document.getElementById('deliveryAddress');
+
+                if (deliveryOption === 'Lorry Delivery (Within Johor State)') {
+                    addressGroup.style.display = 'block';
+                    addressInput.required = true;
+                } else {
+                    addressGroup.style.display = 'none';
+                    addressInput.required = false;
+                }
+            }
+
             function handleBookingSubmit(event) {
                 event.preventDefault();
-                
                 const name = document.getElementById('userName').value;
                 const plant = document.getElementById('plantSelect').value;
+                const qty = document.getElementById('plantQty').value;
+                const method = document.getElementById('deliveryOption').value;
                 const date = document.getElementById('pickupDate').value;
+                const generatedCode = Math.floor(1000 + Math.random() * 9000).toString();
 
-                alert(`Thank you, ${name}!\nYour reservation for [${plant}] has been received.\nPlease pick it up by ${date}.`);
-                
+                bookingDatabase[generatedCode] = {
+                    name: name,
+                    plant: plant,
+                    qty: qty,
+                    method: method,
+                    date: date,
+                    status: "Pending Approval"
+                };
+
+                alert(`Thank you! Your Booking Code is #${generatedCode}. Please save this code to check your delivery status later.`);
+                document.getElementById('trackCodeInput').value = generatedCode;
                 document.getElementById('plantBookingForm').reset();
+                toggleAddressField();
+            }
+
+            function trackBookingStatus() {
+                const inputCode = document.getElementById('trackCodeInput').value.trim();
+                const resultBox = document.getElementById('trackingResult');
+
+                if (inputCode === "") {
+                    alert("Please enter a 4-digit code first.");
+                    return;
+                }
+
+                if (bookingDatabase[inputCode]) {
+                    const order = bookingDatabase[inputCode];
+                    document.getElementById('resName').innerText = order.name;
+                    document.getElementById('resPlant').innerText = order.plant;
+                    document.getElementById('resQty').innerText = order.qty;
+                    document.getElementById('resMethod').innerText = order.method;
+                    document.getElementById('resDate').innerText = order.date;
+                    
+                    const badge = document.getElementById('statusBadge');
+                    badge.innerText = order.status;
+                    badge.className = "status-badge status-" + order.status.toLowerCase().split(' ')[0];
+                    resultBox.style.display = 'block';
+                } else {
+                    alert("Invalid Code! Try '1111', '2222', '3333', or '4444'.");
+                    resultBox.style.display = 'none';
+                }
             }
         </script>
-
     </body>
 </html>
