@@ -152,6 +152,7 @@
             .status-preparing { background: #2b84eb; color: #ffffff; }
             .status-shipped { background: #67c23a; color: #1e222b; }
             .status-cancelled { background: #909399; color: #ffffff; }
+            #adminPanel { display: none; background: #3d465d; padding: 15px; margin-top: 15px; border-radius: 5px; border-left: 4px solid #e74c3c; }
         </style>
     </head>
     <body>
@@ -273,6 +274,20 @@
                 <p style="margin: 5px 0;"><strong>Items Ordered:</strong> <span id="resPlant"></span> (<span id="resQty"></span> pcs)</p>
                 <p style="margin: 5px 0;"><strong>Method:</strong> <span id="resMethod"></span></p>
                 <p style="margin: 5px 0;"><strong>Target Date:</strong> <span id="resDate"></span></p>
+                
+                <button onclick="toggleAdminPanel()" style="background: #3d465d; color: #fff; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; margin-top: 10px; font-size: 0.8em;">⚙️ Admin Mode</button>
+
+                <div id="adminPanel">
+                    <h4 style="color: #e74c3c; margin-bottom: 10px;">🛠️ Admin Update</h4>
+                    <select id="newStatusSelect" style="color: #000; margin-bottom: 10px;">
+                        <option value="Pending Approval">Pending Approval</option>
+                        <option value="Preparing">Preparing</option>
+                        <option value="Shipped">Shipped</option>
+                        <option value="Cancelled">Cancelled</option>
+                    </select>
+                    <button onclick="adminUpdateStatus()" style="background: #e74c3c; color: white; border: none; padding: 8px 15px; cursor: pointer; border-radius: 3px; width: 100%;">Save Status</button>
+                </div>
+
                 <p style="margin-top: 10px; font-size: 0.9em; color: #a0a0a1; border-top: 1px solid #3d465d; padding-top: 8px;">
                     💡 <em>Note: Our team will contact you shortly via phone call for scheduling details.</em>
                 </p>
@@ -282,6 +297,9 @@
         <a href="PLANT SPECIES.html" class="back-link">⬅ Back to Plant Gallery</a>
 
         <script>
+            // 设定管理员权限（此处为默认开启，方便你测试）
+            localStorage.setItem("isAdmin", "true");
+
             const today = new Date().toISOString().split('T')[0];
             document.getElementById('pickupDate').min = today;
 
@@ -292,14 +310,21 @@
                 "4444": { name: "John Doe", plant: "Codiaeum variegatum", qty: "30", method: "Self-Pickup", date: "2026-06-05", status: "Cancelled" }
             };
 
-            // 日期防错：防止选到周六(6)和周日(0)
+            function toggleAdminPanel() {
+                const adminPanel = document.getElementById('adminPanel');
+                if (localStorage.getItem("isAdmin") === "true") {
+                    adminPanel.style.display = (adminPanel.style.display === "block") ? "none" : "block";
+                } else {
+                    alert("Access Denied");
+                }
+            }
+
             function validateDate() {
                 const dateInput = document.getElementById('pickupDate');
                 const dateValue = new Date(dateInput.value);
                 const day = dateValue.getUTCDay(); 
-
                 if (day === 6 || day === 0) {
-                    alert("Please note: The nursery is closed on Saturdays and Sundays. Please select a date from Monday to Friday.");
+                    alert("Please note: The nursery is closed on Saturdays and Sundays.");
                     dateInput.value = ""; 
                 }
             }
@@ -308,7 +333,6 @@
                 const deliveryOption = document.getElementById('deliveryOption').value;
                 const addressGroup = document.getElementById('addressFieldGroup');
                 const addressInput = document.getElementById('deliveryAddress');
-
                 if (deliveryOption === 'Lorry Delivery (Within Johor State)') {
                     addressGroup.style.display = 'block';
                     addressInput.required = true;
@@ -327,16 +351,8 @@
                 const date = document.getElementById('pickupDate').value;
                 const generatedCode = Math.floor(1000 + Math.random() * 9000).toString();
 
-                bookingDatabase[generatedCode] = {
-                    name: name,
-                    plant: plant,
-                    qty: qty,
-                    method: method,
-                    date: date,
-                    status: "Pending Approval"
-                };
-
-                alert(`Thank you! Your Booking Code is #${generatedCode}. Please save this code to check your delivery status later.`);
+                bookingDatabase[generatedCode] = { name, plant, qty, method, date, status: "Pending Approval" };
+                alert(`Thank you! Your Booking Code is #${generatedCode}.`);
                 document.getElementById('trackCodeInput').value = generatedCode;
                 document.getElementById('plantBookingForm').reset();
                 toggleAddressField();
@@ -345,12 +361,6 @@
             function trackBookingStatus() {
                 const inputCode = document.getElementById('trackCodeInput').value.trim();
                 const resultBox = document.getElementById('trackingResult');
-
-                if (inputCode === "") {
-                    alert("Please enter a 4-digit code first.");
-                    return;
-                }
-
                 if (bookingDatabase[inputCode]) {
                     const order = bookingDatabase[inputCode];
                     document.getElementById('resName').innerText = order.name;
@@ -358,14 +368,23 @@
                     document.getElementById('resQty').innerText = order.qty;
                     document.getElementById('resMethod').innerText = order.method;
                     document.getElementById('resDate').innerText = order.date;
-                    
                     const badge = document.getElementById('statusBadge');
                     badge.innerText = order.status;
                     badge.className = "status-badge status-" + order.status.toLowerCase().split(' ')[0];
                     resultBox.style.display = 'block';
                 } else {
-                    alert("Invalid Code! Try '1111', '2222', '3333', or '4444'.");
+                    alert("Invalid Code!");
                     resultBox.style.display = 'none';
+                }
+            }
+
+            function adminUpdateStatus() {
+                const code = document.getElementById('trackCodeInput').value.trim();
+                const newStatus = document.getElementById('newStatusSelect').value;
+                if (bookingDatabase[code]) {
+                    bookingDatabase[code].status = newStatus;
+                    alert("Status updated to: " + newStatus);
+                    trackBookingStatus(); 
                 }
             }
         </script>
