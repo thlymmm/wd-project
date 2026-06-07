@@ -6,35 +6,164 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <link rel="stylesheet" href="assets/css/main.css" />
         <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+        <style>
+            #header {
+                position: sticky !important;
+                top: 0 !important;
+                left: 0 !important;
+                width: 100% !important;
+                z-index: 10000 !important;
+                background-color: #272833 !important;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6) !important;
+                height: 5em !important;
+                line-height: 5em !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+                padding: 0 2.5em !important;
+            }
+
+            #logo {
+                position: relative !important;
+                left: auto !important;
+                top: auto !important;
+                margin: 0 !important;
+                height: auto !important;
+                line-height: normal !important;
+                display: block !important;
+            }
+
+            #logo a {
+                border: none !important;
+                font-weight: 600 !important;
+                display: flex !important;
+                align-items: center !important;
+                text-decoration: none !important;
+            }
+
+            #logo img {
+                height: 42px !important;
+                width: auto !important;
+                margin-right: 12px !important;
+                border-radius: 4px !important;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
+                display: block !important;
+            }
+
+            #logo span {
+                display: inline-block !important;
+                font-size: 1em !important;
+                color: #ffffff !important;
+            }
+
+            #nav {
+                position: relative !important;
+                right: auto !important;
+                top: auto !important;
+                height: auto !important;
+                line-height: normal !important;
+                display: block !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            #nav > ul {
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center !important;
+                background-color: #1b1c23 !important;
+                padding: 0.35em 0.6em !important;
+                border-radius: 50px !important;
+                border: 1px solid rgba(255, 255, 255, 0.08) !important;
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+                margin: 0 !important;
+                list-style: none !important;
+                height: auto !important;
+            }
+
+            #nav > ul > li {
+                float: none !important;
+                display: block !important;
+                padding: 0 !important;
+                margin: 0 0.25em !important;
+                height: auto !important;
+                line-height: normal !important;
+                position: relative !important;
+            }
+
+            #nav > ul > li > a:not(.button) {
+                display: block !important;
+                padding: 0.6em 1.2em !important;
+                color: rgba(255, 255, 255, 0.65) !important;
+                font-size: 0.85em !important;
+                font-weight: 600 !important;
+                letter-spacing: 0.5px !important;
+                text-decoration: none !important;
+                border: none !important;
+                border-radius: 50px !important;
+                background: transparent !important;
+                height: auto !important;
+                line-height: normal !important;
+                transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            }
+
+            #nav > ul > li > a:not(.button):hover,
+            #nav > ul > li.active > a:not(.button) {
+                color: #ffffff !important;
+                background-color: #2e5c3a !important;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+            }
+
+            #nav-account-btn.button.primary {
+                display: inline-block !important;
+                height: auto !important;
+                line-height: normal !important;
+                padding: 0.6em 1.4em !important;
+                font-size: 0.85em !important;
+                font-weight: 700 !important;
+                letter-spacing: 0.5px !important;
+                border-radius: 50px !important;
+                background-color: #7c2d3b !important;
+                color: rgba(255, 255, 255, 0.9) !important;
+                border: 1px solid rgba(255, 105, 180, 0.15) !important;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) !important;
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+                margin-left: 0.3em !important;
+            }
+
+            #nav-account-btn.button.primary:hover {
+                background-color: #9c3a4a !important;
+                color: #ffffff !important;
+                box-shadow: 0 0 15px rgba(228, 76, 101, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+                border-color: rgba(255, 182, 193, 0.6) !important;
+                transform: scale(1.02) !important;
+            }
+        </style>
     </head>
     <body class="is-preload">
         <div id="page-wrapper">
 
+            <!-- New Header -->
             <header id="header">
-                    <h1 id="logo">
-                        <a href="index.html" style="display: inline-flex; align-items: center; text-decoration: none; padding-top: 0; padding-bottom: 0;">
-                            <img src="images/logo.png" alt="Ann Yang Trading Logo" style="height: 42px; width: auto; margin-right: 12px; display: block;" />
-                            <span style="vertical-align: middle;">Ann Yang Trading</span>
-                        </a>
-                    </h1>
-                    <nav id="nav">
-                        <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li>
-                                <a href="#">Layouts</a>
-                                <ul>
-                                    <li><a href="left-sidebar.html">Left Sidebar</a></li>
-                                    <li><a href="right-sidebar.html">Right Sidebar</a></li>
-                                    <li><a href="no-sidebar.html" class="active">No Sidebar</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#about">About Us</a></li>
-                            <li><a href="#products">Products</a></li>
-                            <li><a href="#values">Core Values</a></li>
-                            <li style="color: #fff; font-weight: bold; padding-left: 1em;">📞 012-709 6951</li>
-                        </ul>
-                    </nav>
-                </header>
+                <h1 id="logo">
+                    <a href="homepage.html">
+                        <img src="images/logo.png" alt="Ann Yang Trading Logo" />
+                        <span>Ann Yang Trading | Wholesale Seedlings &amp; Flowers</span>
+                    </a>
+                </h1>
+
+                <nav id="nav">
+                    <ul>
+                        <li><a href="homepage.html">Home</a></li>
+                        <li class="active"><a href="profile.html">Company Profile</a></li>
+                        <li><a href="PLANT SPECIES.html">Product Catalog</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="booking.html">Booking Now</a></li>
+                        <li><a href="accounts.html" id="nav-account-btn" class="button primary">Login / Register</a></li>
+                    </ul>
+                </nav>
+            </header>
 
             <div id="main" class="wrapper style1">
                     <div class="container"></div>
@@ -74,20 +203,16 @@
                                     function changeSlide(direction) {
                                         let slides = document.getElementsByClassName("mySlides");
                                         
-                                        
                                         slides[currentSlideIdx].style.display = "none";
-                                        
                                         
                                         currentSlideIdx += direction;
                                         
-                                       
                                         if (currentSlideIdx >= slides.length) {
                                             currentSlideIdx = 0;
                                         } else if (currentSlideIdx < 0) {
                                             currentSlideIdx = slides.length - 1;
                                         }
                                         
-                                       
                                         slides[currentSlideIdx].style.display = "block";
                                     }
                                 </script>
@@ -147,14 +272,51 @@
                     </div>
                 </div>
 
-            <footer id="footer">
+            <div style="display: flex; flex-direction: column;">
+                <section id="contact" class="wrapper style2 fade" style="padding: 3em 0 2.5em 0 !important; margin-bottom: 0 !important;">
+                    <div class="container">
+                        <header class="major special" style="margin-bottom: 2em !important;">
+                            <h2 style="font-size: 2.2em; margin-bottom: 0.2em;">Contact Us</h2>
+                            <p style="font-size: 1.1em; margin-bottom: 0;">Get in touch for instant quotes or visit our physical store.</p>
+                        </header>
+                        <div class="row">
+                            <div class="col-6 col-12-medium">
+                                <ul class="alt" style="text-align: left; margin-bottom: 1.5em;">
+                                    <li style="padding: 0.5em 0; font-size: 1.1em; line-height: 1.6;">
+                                        <strong>📍 Physical Store Address:</strong><br>
+                                        Lot 1748, Plt 59, Jln Kg Lubok Tengah Semerah<br>
+                                        Batu Pahat, Johor, Malaysia
+                                    </li>
+                                    <li style="padding: 0.5em 0; font-size: 1.1em; line-height: 1.6;">
+                                        <strong>🕒 Operating Hours:</strong><br>
+                                        Monday to Friday: 9:00 AM - 6:00 PM
+                                    </li>
+                                </ul>
+                                <ul class="actions" style="justify-content: flex-start; margin-bottom: 0;">
+                                    <li>
+                                        <a href="https://wa.me/60123456789" target="_blank" class="button primary icon brands fa-whatsapp" style="background-color: #25D366 !important; border: none !important; color: #ffffff !important; box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important; font-size: 1.05em; padding: 0.8em 1.5em; height: auto; border-radius: 6px;">WhatsApp Quick Contact / Inquiry</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-6 col-12-medium">
+                                <iframe title="Google Maps" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127608.06456094628!2d102.85590924999999!3d1.85489725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d04423b497b771%3A0xc638bbda892d34!2sBatu%20Pahat%2C%20Johor%2C%20Malaysia!5e0!3m2!1sen!2smy!4v1650000000000!5m2!1sen!2smy" width="100%" height="280" style="border:0; border-radius: 8px; margin-top: 0.5em; box-shadow: 0 8px 20px rgba(0,0,0,0.15);" allowfullscreen="" loading="lazy"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <footer id="footer" style="padding-top: 3.5em !important; margin-top: 0 !important; background-color: #272833;">
+                    <ul class="icons">
+                        <li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+                        <li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+                        <li><a href="#" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+                        <li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+                        <li><a href="#" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
+                    </ul>
                     <ul class="copyright">
-                        <li>&copy; Ann Yang Trading. All rights reserved.</li>
-                        <li>Contact: 012-709 6951</li>
-                        <li>Location: Lot 1748, PLT 59, Jln Kg Lubok Tengah Semerah, 83600 Batu Pahat, Johor</li>
-                        <li>Design Context: UTHM BIC21003 / BIW20303 Project Team</li>
+                        <li>&copy; B2B Wholesale. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
                     </ul>
                 </footer>
+            </div>
 
         </div>
 
