@@ -1,0 +1,1272 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Ann Yang Trading - Product Catalog</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+        <style>
+            @import url("assets/css/fontawesome-all.min.css");
+            @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400,400italic");
+
+            html, body, div, span, applet, object, iframe,
+            h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr,
+            acronym, address, big, cite, code, del, dfn, em, img,
+            ins, kbd, q, s, samp, small, strike, strong, sub, sup,
+            tt, var, b, u, i, center, dl, dt, dd, ol, ul, li,
+            fieldset, form, label, legend, table, caption, tbody,
+            tfoot, thead, tr, th, td, article, aside, canvas, details,
+            embed, figure, figcaption, footer, header, hgroup, menu,
+            nav, output, ruby, section, summary, time, mark, audio, video {
+                margin: 0; padding: 0; border: 0;
+                font-size: 100%; font: inherit; vertical-align: baseline;
+            }
+            article, aside, details, figcaption, figure, footer,
+            header, hgroup, menu, nav, section { display: block; }
+            body  { line-height: 1; }
+            ol, ul { list-style: none; }
+            table { border-collapse: collapse; border-spacing: 0; }
+            *, *:before, *:after { box-sizing: border-box; }
+
+            body {
+                background: #242629;
+                color: #a0a0a1;
+                font-family: "Source Sans Pro", Helvetica, sans-serif;
+                font-size: 11pt;
+                font-weight: 300;
+                letter-spacing: 0.025em;
+                line-height: 1.65;
+            }
+
+            body.is-preload *, body.is-preload *:before, body.is-preload *:after,
+            body.is-resizing *, body.is-resizing *:before, body.is-resizing *:after
+                { animation: none !important; transition: none !important; }
+
+            @keyframes spinner {
+                0%   { transform: rotate(0deg); }
+                100% { transform: rotate(359deg); }
+            }
+
+            a {
+                border-bottom: dotted 1px;
+                color: #34a58e;
+                text-decoration: none;
+                transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
+            }
+            a:hover { border-bottom-color: transparent; color: #34a58e; }
+
+            strong, b { color: #ffffff; font-weight: 300; }
+            em, i     { font-style: italic; }
+            p         { margin: 0 0 2em 0; }
+
+            h1, h2, h3, h4, h5, h6 {
+                color: #ffffff;
+                font-weight: 300;
+                letter-spacing: 0.1em;
+                line-height: 1.5;
+                margin: 0 0 1em 0;
+                text-transform: uppercase;
+            }
+            h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { color: inherit; text-decoration: none; }
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.25em; }
+            h3 { font-size: 1.1em; }
+            h4 { font-size: 1em; }
+            h5 { font-size: 0.9em; }
+            h6 { font-size: 0.7em; }
+
+            @media screen and (max-width: 736px) {
+                h2 { font-size: 1em; }
+                h3 { font-size: 0.9em; }
+                h4 { font-size: 0.8em; }
+                h5, h6 { font-size: 0.7em; }
+            }
+
+            .button {
+                appearance: none;
+                background-color: transparent;
+                border: 0;
+                border-radius: 0;
+                box-shadow: inset 0 0 0 2px #36383c;
+                color: #ffffff !important;
+                cursor: pointer;
+                display: inline-block;
+                font-size: 0.9em;
+                font-weight: 300;
+                height: 3.05556em;
+                letter-spacing: 0.1em;
+                line-height: 3.05556em;
+                padding: 0 2.5em;
+                text-align: center;
+                text-decoration: none;
+                text-transform: uppercase;
+                transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
+                white-space: nowrap;
+            }
+            .button:hover         { box-shadow: inset 0 0 0 2px #34a58e; color: #34a58e !important; }
+            .button.icon          { padding-left: 1.35em; }
+            .button.icon:before   { margin-right: 0.5em; }
+            .button.primary       { background-color: #34a58e; box-shadow: none; }
+            .button.primary:hover { background-color: #47c5ab; color: #ffffff !important; }
+
+            .icon {
+                text-decoration: none;
+                border-bottom: none;
+                position: relative;
+            }
+            .icon:before {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: inline-block;
+                font-style: normal;
+                font-variant: normal;
+                font-family: 'Font Awesome 5 Free';
+                font-weight: 400;
+                line-height: inherit;
+                text-rendering: auto;
+                text-transform: none !important;
+            }
+            .icon > .label     { display: none; }
+            .icon.solid:before  { font-weight: 900; }
+            .icon.brands:before { font-family: 'Font Awesome 5 Brands'; }
+
+            ul.icons { cursor: default; list-style: none; padding-left: 0; }
+            ul.icons li              { display: inline-block; padding: 0 1em 0 0; }
+            ul.icons li:last-child   { padding-right: 0; }
+            ul.icons li .icon        { color: #505051; }
+            ul.icons li .icon:before { font-size: 1.5em; }
+
+            #wrapper {
+                position: relative;
+                transition: filter 0.5s ease;
+            }
+            #wrapper:after {
+                pointer-events: none;
+                background: rgba(36, 38, 41, 0.5);
+                content: '';
+                display: block;
+                height: 100%;
+                left: 0;
+                opacity: 0;
+                position: absolute;
+                top: 0;
+                visibility: hidden;
+                width: 100%;
+                z-index: 1;
+                transition: opacity 0.5s ease, visibility 0.5s;
+            }
+            body.modal-active #wrapper           { filter: blur(8px); }
+            body.modal-active #wrapper:after     { pointer-events: auto; opacity: 1; visibility: visible; z-index: 10003; }
+
+            #wrapper:before {
+                animation: spinner 1s infinite linear !important;
+                pointer-events: none;
+                background: url("images/spinner.svg") center / contain no-repeat;
+                content: '';
+                display: block;
+                font-size: 2em;
+                height: 2em; width: 2em;
+                left: 50%;
+                line-height: 2em;
+                margin: -1em 0 0 -1em;
+                opacity: 0;
+                position: fixed;
+                text-align: center;
+                top: 75%;
+                visibility: hidden;
+                transition: top 0.75s ease-in-out, opacity 0.35s ease-out, visibility 0.35s;
+            }
+            body.is-preload #wrapper:before {
+                transition: opacity 1s ease-out !important;
+                transition-delay: 0.5s !important;
+                opacity: 0.25;
+                top: 50%;
+                visibility: visible;
+            }
+
+            #main {
+                display: flex;
+                flex-wrap: wrap;
+                transition: filter 0.5s ease;
+                -webkit-tap-highlight-color: rgba(255,255,255,0);
+            }
+            #main:after {
+                pointer-events: none;
+                background: rgba(36, 38, 41, 0.25);
+                content: '';
+                display: block;
+                height: 100%; width: 100%;
+                left: 0; top: 0;
+                opacity: 0;
+                position: absolute;
+                visibility: hidden;
+                z-index: 1;
+                transition: opacity 0.5s ease, visibility 0.5s;
+            }
+            body.content-active #main       { filter: blur(6px); }
+            body.content-active #main:after { pointer-events: auto; opacity: 1; visibility: visible; }
+
+            #main .thumb {
+                overflow: hidden;
+                position: relative;
+                opacity: 1;
+                pointer-events: auto;
+                transition: opacity 1.25s ease-in-out;
+                -webkit-tap-highlight-color: rgba(255,255,255,0);
+                height: calc(40vh - 2em);
+                min-height: 18em;
+                width: 100%;
+            }
+            body.is-preload #main .thumb { pointer-events: none; opacity: 0; }
+
+            @media screen and (min-width: 481px)  { #main .thumb { width: 50%;        height: calc(28.57143vh - 1.33333em); } }
+            @media screen and (min-width: 981px)  { #main .thumb { width: 50%;        height: calc(40vh - 2em); min-height: 20em; } }
+            @media screen and (min-width: 1281px) { #main .thumb { width: 33.33333%; } }
+            @media screen and (min-width: 1681px) { #main .thumb { width: 25%; } }
+
+            #main .thumb:after,
+            #main .thumb > .image {
+                position: absolute;
+                top: 0; left: 0;
+                height: 100%; width: 100%;
+            }
+            #main .thumb:after {
+                background-image: linear-gradient(to top, rgba(10,17,25,0.35) 5%, rgba(10,17,25,0) 35%);
+                background-size: cover;
+                content: '';
+                display: block;
+                pointer-events: none;
+            }
+            #main .thumb > .image {
+                background: center / cover no-repeat;
+                border: 0;
+                -webkit-tap-highlight-color: rgba(255,255,255,0);
+            }
+            #main .thumb > h2 {
+                pointer-events: none;
+                bottom: 1.875em;
+                font-size: 0.8em;
+                left: 2.1875em;
+                margin: 0;
+                position: absolute;
+                z-index: 1;
+            }
+            #main .thumb > p { display: none; }
+
+            .poptrox-popup {
+                background: rgba(31, 34, 36, 0.925);
+                box-shadow: 0 1em 3em 0.5em rgba(0,0,0,0.25);
+                cursor: default;
+            }
+
+            .poptrox-popup:before,
+            .poptrox-popup .closer,
+            .poptrox-popup .nav-previous,
+            .poptrox-popup .nav-next {
+                position: absolute;
+                top: 0; left: 0;
+                height: 100%; width: 100%;
+                transition: opacity 0.2s ease-in-out;
+            }
+            .poptrox-popup:before {
+                background-image:
+                    linear-gradient(to left,  rgba(31,34,36,0.35), rgba(31,34,36,0) 10em, rgba(31,34,36,0)),
+                    linear-gradient(to right, rgba(31,34,36,0.35), rgba(31,34,36,0) 10em, rgba(31,34,36,0));
+                content: '';
+                display: block;
+                opacity: 1;
+                z-index: 1;
+            }
+            .poptrox-popup .closer,
+            .poptrox-popup .nav-previous,
+            .poptrox-popup .nav-next {
+                background-position: center;
+                background-repeat: no-repeat;
+                height: auto; width: auto;
+                opacity: 0;
+                z-index: 2;
+            }
+            .poptrox-popup .closer {
+                background: url("images/close.svg") center / 3em no-repeat;
+                height: 5em; width: 5em;
+                left: auto; top: 0; right: 0;
+            }
+            .poptrox-popup .nav-previous,
+            .poptrox-popup .nav-next {
+                background: url("images/arrow.svg") center / 5em no-repeat;
+                cursor: pointer;
+                height: 8em; width: 6em;
+                margin-top: -4em;
+                top: 50%; left: auto;
+            }
+            .poptrox-popup .nav-previous { transform: scaleX(-1); left: 0; }
+            .poptrox-popup .nav-next     { right: 0; }
+            .poptrox-popup .caption {
+                background-image: linear-gradient(to top, rgba(16,16,16,0.45) 25%, rgba(16,16,16,0) 100%);
+                bottom: 0; left: 0; top: auto;
+                height: auto; width: 100%;
+                cursor: default;
+                padding: 2em 2em 0.1em;
+                position: absolute;
+                text-align: left;
+                z-index: 2;
+            }
+            .poptrox-popup .caption h2,
+            .poptrox-popup .caption h3,
+            .poptrox-popup .caption h4,
+            .poptrox-popup .caption h5,
+            .poptrox-popup .caption h6 { margin: 0 0 0.5em 0; }
+            .poptrox-popup .caption p  { color: #ffffff; }
+            .poptrox-popup .loader {
+                animation: spinner 1s infinite linear !important;
+                background: url("images/spinner.svg") center / contain no-repeat;
+                display: block;
+                font-size: 2em;
+                height: 2em; width: 2em;
+                left: 50%; top: 50%;
+                line-height: 2em;
+                margin: -1em 0 0 -1em;
+                opacity: 0.25;
+                position: absolute;
+                text-align: center;
+            }
+            .poptrox-popup:hover .closer,
+            .poptrox-popup:hover .nav-previous,
+            .poptrox-popup:hover .nav-next       { opacity: 0.5; }
+            .poptrox-popup:hover .closer:hover,
+            .poptrox-popup:hover .nav-previous:hover,
+            .poptrox-popup:hover .nav-next:hover { opacity: 1; }
+            .poptrox-popup.loading:before        { opacity: 0; }
+            body.touch .poptrox-popup .closer,
+            body.touch .poptrox-popup .nav-previous,
+            body.touch .poptrox-popup .nav-next  { opacity: 1 !important; }
+            @media screen and (max-width: 736px) {
+                .poptrox-popup:before,
+                .poptrox-popup .caption,
+                .poptrox-popup .closer,
+                .poptrox-popup .nav-previous,
+                .poptrox-popup .nav-next { display: none !important; }
+            }
+
+            .horizontal-nav-bar {
+                background: #1e2237;
+                border-bottom: 1px solid #242943;
+                padding: 0.5em 0;
+                position: relative;
+                width: 100%;
+                z-index: 10;
+            }
+            .nav-bar-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+                padding: 0 10px;
+            }
+            .nav-bar-btn {
+                flex: 1;
+                background: #242943;
+                color: #ffffff;
+                padding: 0.8em 0;
+                text-decoration: none;
+                border-bottom: none;
+                border-radius: 4px;
+                font-weight: bold;
+                font-size: 0.9em;
+                letter-spacing: 1px;
+                text-align: center;
+                transition: all 0.2s ease;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .nav-bar-btn:hover {
+                background: #343a5e;
+                color: #34a853;
+                transform: translateY(-1px);
+            }
+
+            .section-divider-bar {
+                background: #242943;
+                cursor: pointer;
+                display: block;
+                padding: 1.2em 2em;
+                text-align: center;
+                width: 100%;
+            }
+            .section-divider-bar:hover { background: #2b3150; }
+            .section-divider-bar a  { display: block; text-decoration: none; border-bottom: none; }
+            .section-divider-bar h2 { color: #ffffff; font-size: 1.1em; margin: 0; letter-spacing: 1.5px; }
+            .section-divider-bar p  { color: #a0a6c7; font-size: 0.75em; margin: 0.2em 0 0 0; }
+
+            #header {
+                position: sticky;
+                top: 0;
+                width: 100%;
+                z-index: 10000;
+                background-color: #272833;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+                height: 5em;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 2.5em;
+            }
+            #header h1 {
+                position: static;
+                height: auto;
+                line-height: normal;
+                margin: 0;
+                font-size: 1em;
+            }
+            #header h1 a {
+                border: none;
+                font-weight: 600;
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                color: inherit;
+            }
+            #header h1 img {
+                height: 42px;
+                width: auto;
+                margin-right: 12px;
+                border-radius: 4px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+                display: block;
+            }
+            #header h1 span { color: #ffffff; }
+            #header nav {
+                position: static;
+                height: auto;
+                line-height: normal;
+            }
+            #header nav ul {
+                display: flex;
+                align-items: center;
+                background-color: #1b1c23;
+                padding: 0.35em 0.6em;
+                border-radius: 50px;
+                border: 1px solid rgba(255,255,255,0.08);
+                box-shadow: 0 6px 20px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05);
+                margin: 0;
+                list-style: none;
+            }
+            #header nav ul li {
+                display: block;
+                margin: 0 0.25em;
+                padding: 0;
+                line-height: normal;
+            }
+            #header nav ul li a:not(.button) {
+                display: block;
+                padding: 0.6em 1.2em;
+                color: rgba(255,255,255,0.65);
+                font-size: 0.85em;
+                font-weight: 600;
+                letter-spacing: 0.5px;
+                text-decoration: none;
+                border: none;
+                border-radius: 50px;
+                background: transparent;
+                line-height: normal;
+                transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            #header nav ul li a:not(.button):hover,
+            #header nav ul li.active > a:not(.button) {
+                color: #ffffff;
+                background-color: #2e5c3a;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.15);
+            }
+            #nav-account-btn.button.primary {
+                height: auto;
+                line-height: normal;
+                padding: 0.6em 1.4em;
+                font-size: 0.85em;
+                font-weight: 700;
+                letter-spacing: 0.5px;
+                border-radius: 50px;
+                background-color: #7c2d3b;
+                color: rgba(255,255,255,0.9);
+                border: 1px solid rgba(255,105,180,0.15);
+                box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                margin-left: 0.3em;
+            }
+            #nav-account-btn.button.primary:hover {
+                background-color: #9c3a4a;
+                color: #ffffff;
+                box-shadow: 0 0 15px rgba(228,76,101,0.6), inset 0 1px 0 rgba(255,255,255,0.2);
+                border-color: rgba(255,182,193,0.6);
+                transform: scale(1.02);
+            }
+
+            #contact {
+                background: #e8535a;
+				color: #ffffff;
+                padding: 3em 2em 2.5em;
+            }
+            .contact-inner { max-width: 960px; margin: 0 auto; }
+            .contact-header { text-align: center; margin-bottom: 2em; }
+            .contact-header h2 { font-size: 2.2em; margin-bottom: 0.2em; }
+            .contact-header p  { font-size: 1.1em; margin: 0; }
+            .contact-body {
+                display: flex;
+                gap: 2em;
+                align-items: flex-start;
+            }
+            .contact-info,
+            .contact-map { flex: 1; }
+            .contact-info li {
+                border-top: 1px solid #36383c;
+                padding: 0.8em 0;
+                font-size: 1.05em;
+                line-height: 1.6;
+            }
+            .contact-info li:first-child { border-top: none; padding-top: 0; }
+            .contact-info .fa-icon {
+                display: inline-block;
+                font-family: 'Font Awesome 5 Free';
+                font-weight: 900;
+                font-style: normal;
+                margin-right: 0.4em;
+                color: #34a58e;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+            .contact-map iframe {
+                width: 100%;
+                height: 280px;
+                border: 0;
+                border-radius: 8px;
+                box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+                display: block;
+                margin-top: 0.5em;
+            }
+            .btn-whatsapp.button.primary {
+                background-color: #25D366;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+                border-radius: 6px;
+                font-size: 1.05em;
+                height: auto;
+                line-height: normal;
+                padding: 0.8em 1.5em;
+            }
+            .btn-whatsapp.button.primary:hover { background-color: #1da851; color: #ffffff !important; }
+            @media screen and (max-width: 736px) { .contact-body { flex-direction: column; } }
+
+            #footer {
+                background: #272833;
+                padding: 2em 0;
+                text-align: center;
+            }
+            #footer .icons     { margin-bottom: 1em; }
+            #footer .copyright { color: #505051; font-size: 0.9em; display: flex; justify-content: center; gap: 1em; }
+            #footer .copyright a { color: inherit; }
+
+            .thumb.force-show { opacity: 1 !important; transform: none !important; visibility: visible !important; }
+            body.force-ready::after { display: none !important; }
+
+            #main article.thumb img { width: 100%; height: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
+
+            .species-edit-button {
+                position: absolute;
+                top: 0.75em;
+                right: 0.75em;
+                z-index: 20;
+                display: none;
+                height: auto;
+                line-height: 1;
+                padding: 0.65em 0.9em;
+                border-radius: 4px;
+                background: #e74c3c !important;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.35) !important;
+                color: #ffffff !important;
+                font-size: 0.75em;
+                letter-spacing: 0;
+                text-transform: none;
+            }
+
+            body.admin-species-mode .species-edit-button { display: inline-block; }
+
+            .species-editor-modal {
+                position: fixed;
+                inset: 0;
+                z-index: 30000;
+                display: none;
+                align-items: center;
+                justify-content: center;
+                padding: 1.5em;
+                background: rgba(0,0,0,0.72);
+            }
+
+            .species-editor-modal.active { display: flex; }
+
+            .species-editor-card {
+                width: min(620px, 100%);
+                max-height: 92vh;
+                overflow-y: auto;
+                padding: 1.5em;
+                border-radius: 6px;
+                background: #272833;
+                box-shadow: 0 18px 50px rgba(0,0,0,0.55);
+            }
+
+            .species-editor-card h3 {
+                margin: 0 0 1em 0;
+                color: #ffffff;
+                letter-spacing: 0.05em;
+            }
+
+            .species-editor-card label {
+                display: block;
+                margin: 0.85em 0 0.35em 0;
+                color: #ffffff;
+                font-size: 0.85em;
+                font-weight: 600;
+            }
+
+            .species-editor-card input,
+            .species-editor-card textarea {
+                width: 100%;
+                border: 1px solid #3d465d;
+                border-radius: 4px;
+                background: #1f2029;
+                color: #ffffff;
+            }
+
+            .species-editor-card textarea {
+                min-height: 8em;
+                resize: vertical;
+            }
+
+            .species-editor-actions {
+                display: flex;
+                gap: 0.75em;
+                margin: 1.2em 0 0 0;
+                padding: 0;
+                list-style: none;
+            }
+
+            .species-editor-actions li { flex: 1; padding: 0; }
+
+            .species-editor-actions .button {
+                width: 100%;
+                height: auto;
+                line-height: 1.4;
+                padding: 0.75em 1em;
+            }
+
+            @media screen and (max-width: 480px) {
+                .species-editor-actions { flex-direction: column; }
+            }
+        </style>
+    </head>
+    <body class="is-preload">
+        <div id="wrapper">
+
+            <header id="header">
+                <h1 id="logo">
+                    <a href="homepage.html">
+                        <img src="images/logo.png" alt="Ann Yang Trading Logo" />
+                        <span>Ann Yang Trading | Wholesale Seedlings &amp; Flowers</span>
+                    </a>
+                </h1>
+                <nav id="nav">
+                    <ul>
+                        <li><a href="homepage.html">Home</a></li>
+                        <li><a href="profile.html">Company Profile</a></li>
+                        <li class="active"><a href="PLANT SPECIES.html">Product Catalog</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="booking.html">Booking Now</a></li>
+                        <li><a href="accounts.html" id="nav-account-btn" class="button primary">Login / Register</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+            <div id="main">
+
+                <div class="horizontal-nav-bar">
+                    <div class="nav-bar-container">
+                        <a href="#species-section" onclick="filterCategory('species-section')" class="nav-bar-btn">&#127807; Species</a>
+                        <a href="#euphorbiaceae-section" onclick="filterCategory('euphorbiaceae-section')" class="nav-bar-btn">&#127807; Euphorbiaceae</a>
+                        <a href="#polygonaceae-section" onclick="filterCategory('polygonaceae-section')" class="nav-bar-btn">&#127807; Polygonaceae</a>
+                        <a href="#acanthaceae-section" onclick="filterCategory('acanthaceae-section')" class="nav-bar-btn">&#127807; Acanthaceae</a>
+                    </div>
+                </div>
+
+                <div class="section-divider-bar" id="species-section" onclick="scrollToTop()">
+                    <h2>PLANT SPECIES</h2>
+                    <p>Specific plants and flower varieties <span>· Click to scroll to top ↑</span></p>
+                </div>
+
+                <article class="thumb">
+                    <a href="images/fulls/01.jpeg" title="&lt;strong&gt;Alpinia purpurata (Red Ginger)&lt;/strong&gt;&lt;br&gt;A perennial herbaceous plant with bright red spike inflorescences, widely used for cut flowers, landscape decoration, and garden beautification." class="image"><img src="images/thumbs/01.jpg" alt="Alpinia purpurata" /></a>
+                    <h2>Alpinia purpurata (Red Ginger)</h2>
+                    <p>A perennial herbaceous plant with bright red spike inflorescences, widely used for cut flowers, landscape decoration, and garden beautification.</p>
+                </article>
+
+                <article class="thumb">
+                    <a href="images/fulls/02.jpg" title="&lt;strong&gt;Pseuderanthemum 'golden' (Golden False Eranthemum)&lt;/strong&gt;&lt;br&gt;An evergreen shrub featured for its bright golden-yellow foliage, serving as an excellent color-contrast plant in tropical gardens." class="image"><img src="images/thumbs/02.jpg" alt="Pseuderanthemum 'golden'" /></a>
+                    <h2>Pseuderanthemum 'golden' (Golden False Eranthemum)</h2>
+                    <p>An evergreen shrub featured for its bright golden-yellow foliage, serving as an excellent color-contrast plant in tropical gardens.</p>
+                </article>
+
+                <article class="thumb">
+                    <a href="images/fulls/03.jpeg" title="&lt;strong&gt;Piper sarmentosum (Wild Betel Leaf)&lt;/strong&gt;&lt;br&gt;A creeping herb widely used in Southeast Asian cooking to wrap food, while also carrying well-known traditional medicinal values." class="image"><img src="images/thumbs/03.jpg" alt="Piper sarmentosum" /></a>
+                    <h2>Piper sarmentosum (Wild Betel Leaf)</h2>
+                    <p>A creeping herb widely used in Southeast Asian cooking to wrap food, while also carrying well-known traditional medicinal values.</p>
+                </article>
+
+                <article class="thumb">
+                    <a href="images/fulls/31.jpeg" title="&lt;strong&gt;Dieffenbachia seguine&lt;/strong&gt;&lt;br&gt;A popular tropical evergreen perennial from the Araceae family, highly prized for its large, dramatic leaves splattered with creamy-white or yellow variegation." class="image"><img src="images/thumbs/31.jpg" alt="Dieffenbachia seguine" /></a>
+                    <h2>Dieffenbachia seguine</h2>
+                    <p>A popular tropical evergreen perennial from the Araceae family, highly prized for its large, dramatic leaves splattered with creamy-white or yellow variegation.</p>
+                </article>
+
+                <article class="thumb">
+                    <a href="images/fulls/32.jpeg" title="&lt;strong&gt;Fragraea ceilanica&lt;/strong&gt;&lt;br&gt;These blossoms emit an incredibly sweet, rich perfume, making it a favorite ornamental plant for gardens and patios." class="image"><img src="images/thumbs/32.jpg" alt="Fragraea ceilanica" /></a>
+                    <h2>Fragraea ceilanica</h2>
+                    <p>These blossoms emit an incredibly sweet, rich perfume, making it a favorite ornamental plant for gardens and patios.</p>
+                </article>
+
+                <article class="thumb">
+                    <a href="images/fulls/33.jpeg" title="&lt;strong&gt;Calathea zebrina (Zebra Plant)&lt;/strong&gt;&lt;br&gt;It is celebrated for its magnificent, velvety leaves of bright green, boldly patterned with zebra-like dark green stripes, and its characteristic &quot;prayer plant&quot; habit of folding its leaves at night." class="image"><img src="images/thumbs/33.jpg" alt="Calathea zebrina (Zebra Plant)" /></a>
+                    <h2>Calathea zebrina (Zebra Plant)</h2>
+                    <p>It is celebrated for its magnificent, velvety leaves of bright green, boldly patterned with zebra-like dark green stripes, and its characteristic "prayer plant" habit of folding its leaves at night.</p>
+                </article>
+
+                <article class="thumb">
+                    <a href="images/fulls/34.jpeg" title="&lt;strong&gt;Pisonia alba (Lettuce Tree)&lt;/strong&gt;&lt;br&gt;It is highly valued in landscaping for its beautiful, thin, and wavy leaves that emerge in a brilliant shade of pale yellow or creamy-white before maturing into a soft chartreuse." class="image"><img src="images/thumbs/34.jpg" alt="Pisonia alba (Lettuce Tree)" /></a>
+                    <h2>Pisonia alba (Lettuce Tree)</h2>
+                    <p>It is highly valued in landscaping for its beautiful, thin, and wavy leaves that emerge in a brilliant shade of pale yellow or creamy-white before maturing into a soft chartreuse.</p>
+                </article>
+
+                <article class="thumb">
+                    <a href="images/fulls/35.jpeg" title="&lt;strong&gt;Spathoglottis Plicata (Large Purple Orchid)&lt;/strong&gt;&lt;br&gt;Unlike epiphytic orchids that grow on trees, it roots firmly in the soil, producing elegant, pleated leaves that resemble palm seedlings and tall spikes of charming, rich purple to magenta blossoms that flower repeatedly throughout the year." class="image"><img src="images/thumbs/35.jpg" alt="Spathoglottis Plicata (Large Purple Orchid)" /></a>
+                    <h2>Spathoglottis Plicata (Large Purple Orchid)</h2>
+                    <p>Unlike epiphytic orchids that grow on trees, it roots firmly in the soil, producing elegant, pleated leaves that resemble palm seedlings and tall spikes of charming, rich purple to magenta blossoms that flower repeatedly throughout the year.</p>
+                </article>
+
+                <article class="thumb">
+                    <a href="images/fulls/36.jpeg" title="&lt;strong&gt;Clerodendrum paniculatum (Pagoda Flower)&lt;/strong&gt;&lt;br&gt;It features massive, upright, terminal inflorescences up to 45 cm tall, packed with hundreds of fiery orange-red or scarlet tubular flowers arranged in tiers like a traditional Buddhist pagoda." class="image"><img src="images/thumbs/36.jpg" alt="Clerodendrum paniculatum (Pagoda Flower)" /></a>
+                    <h2>Clerodendrum paniculatum (Pagoda Flower)</h2>
+                    <p>It features massive, upright, terminal inflorescences up to 45 cm tall, packed with hundreds of fiery orange-red or scarlet tubular flowers arranged in tiers like a traditional Buddhist pagoda.</p>
+                </article>
+
+                <div class="section-divider-bar" id="euphorbiaceae-section" onclick="scrollToTop()">
+                    <h2>EUPHORBIACEAE FAMILY</h2>
+                    <p>Plants with milky sap, varied forms for ornamental or industrial uses <span>· Click to scroll to top ↑</span></p>
+                </div>
+
+                <article class="thumb">
+                    <a href="images/fulls/04.jpg" title="&lt;strong&gt;Euphorbia pulcherrima (Poinsettia)&lt;/strong&gt;&lt;br&gt;Commonly known as Poinsettia, Euphorbia pulcherrima is a popular tropical shrub famous for its vibrant red and green foliage widely used in Christmas floral displays." class="image"><img src="images/thumbs/04.jpg" alt="Euphorbia pulcherrima (Poinsettia)" /></a>
+                    <h2>Euphorbia pulcherrima (Poinsettia)</h2>
+                    <p>Commonly known as Poinsettia, Euphorbia pulcherrima is a popular tropical shrub famous for its vibrant red and green foliage widely used in Christmas floral displays.</p>
+                </article>
+
+                <article class="thumb">
+                    <a href="images/fulls/05.jpg" title="&lt;strong&gt;Euphorbia hirta&lt;/strong&gt;&lt;br&gt;A pantropical annual herb with hairy stems and small dense flower clusters, widely recognized for its traditional medicinal properties and ecological resilience." class="image"><img src="images/thumbs/05.jpg" alt="Euphorbia hirta" /></a>
+                    <h2>Euphorbia hirta</h2>
+                    <p>A pantropical annual herb with hairy stems and small dense flower clusters, widely recognized for its traditional medicinal properties and ecological resilience.</p>
+                </article>
+
+                <article class="thumb">
+                    <a href="images/fulls/06.jpg" title="&lt;strong&gt;Manihot esculenta (Cassava)&lt;/strong&gt;&lt;br&gt;A woody shrub native to South America, Manihot esculenta features distinctive palmate leaves and is globally cultivated for its starchy tuberous roots." class="image"><img src="images/thumbs/06.jpg" alt="Manihot esculenta (Cassava)" /></a>
+                    <h2>Manihot esculenta (Cassava)</h2>
+                    <p>A woody shrub native to South America, Manihot esculenta features distinctive palmate leaves and is globally cultivated for its starchy tuberous roots.</p>
+                </article>
+
+                <article class="thumb">
+                    <a href="images/fulls/07.jpg" title="&lt;strong&gt;Hippomane mancinella (Manchineel)&lt;/strong&gt;&lt;br&gt;Famously known as the Manchineel tree, Hippomane mancinella is a coastal evergreen tree with apple-like fruits, widely recognized as one of the world's most toxic plants." class="image"><img src="images/thumbs/07.jpg" alt="Hippomane mancinella (Manchineel)" /></a>
+                    <h2>Hippomane mancinella (Manchineel)</h2>
+                    <p>Famously known as the Manchineel tree, Hippomane mancinella is a coastal evergreen tree with apple-like fruits, widely recognized as one of the world's most toxic plants.</p>
+                </article>
+
+                <article class="thumb">
+                    <a href="images/fulls/08.jpg" title="&lt;strong&gt;Jatropha curcas&lt;/strong&gt;&lt;br&gt;A hardy tropical shrub with dark green trilobed leaves, widely recognized for its high drought resistance and oil-rich seeds used in biofuel production." class="image"><img src="images/thumbs/08.jpg" alt="Jatropha curcas" /></a>
+                    <h2>Jatropha curcas</h2>
+                    <p>A hardy tropical shrub with dark green trilobed leaves, widely recognized for its high drought resistance and oil-rich seeds used in biofuel production.</p>
+                </article>
+
+                <article class="thumb">
+                    <a href="images/fulls/09.jpg" title="&lt;strong&gt;Acalypha wilkesiana&lt;/strong&gt;&lt;br&gt;An eye-catching evergreen shrub featuring vibrant, multicolored coppery leaves, widely used as an ornamental hedge or accent plant in tropical landscapes." class="image"><img src="images/thumbs/09.jpg" alt="Acalypha wilkesiana" /></a>
+                    <h2>Acalypha wilkesiana</h2>
+                    <p>An eye-catching evergreen shrub featuring vibrant, multicolored coppery leaves, widely used as an ornamental hedge or accent plant in tropical landscapes.</p>
+                </article>
+
+                <article class="thumb">
+                    <a href="images/fulls/10.jpg" title="&lt;strong&gt;Jatropha podagrica&lt;/strong&gt;&lt;br&gt;An unusual tropical shrub characterized by its swollen, bottle-like stem and bright coral-red flower clusters that bloom throughout the year." class="image"><img src="images/thumbs/10.jpg" alt="Jatropha podagrica" /></a>
+                    <h2>Jatropha podagrica</h2>
+                    <p>An unusual tropical shrub characterized by its swollen, bottle-like stem and bright coral-red flower clusters that bloom throughout the year.</p>
+                </article>
+
+                <article class="thumb">
+                    <a href="images/fulls/11.jpg" title="&lt;strong&gt;Codiaeum variegatum&lt;/strong&gt;&lt;br&gt;A highly popular tropical evergreen shrub celebrated for its brilliantly colored, glossy leathery leaves that display endless patterns of yellow, red, and green." class="image"><img src="images/thumbs/11.jpg" alt="Codiaeum variegatum" /></a>
+                    <h2>Codiaeum variegatum</h2>
+                    <p>A highly popular tropical evergreen shrub celebrated for its brilliantly colored, glossy leathery leaves that display endless patterns of yellow, red, and green.</p>
+                </article>
+
+                <article class="thumb">
+                    <a href="images/fulls/12.jpeg" title="&lt;strong&gt;Euphorbia milii (Crown of Thorns)&lt;/strong&gt;&lt;br&gt;It is characterized by densely spiny stems and colorful, long-lasting flower bracts (usually red, pink, or yellow) surrounding the tiny true flowers." class="image"><img src="images/thumbs/12.jpg" alt="Euphorbia milii (Crown of Thorns)" /></a>
+                    <h2>Euphorbia milii (Crown of Thorns)</h2>
+                    <p>It is characterized by densely spiny stems and colorful, long-lasting flower bracts (usually red, pink, or yellow) surrounding the tiny true flowers.</p>
+                </article>
+
+                <div class="section-divider-bar" id="polygonaceae-section" onclick="scrollToTop()">
+                    <h2>POLYGONACEAE FAMILY</h2>
+                    <p>Commonly known as the knotweed family, featuring swollen nodes on stems <span>· Click to scroll to top ↑</span></p>
+                </div>
+
+                <article class="thumb">
+                    <a href="images/fulls/13.jpeg" title="&lt;strong&gt;Antigonon leptopus&lt;/strong&gt;&lt;br&gt;A vigorous tropical climbing vine featuring cascading clusters of vibrant pink flowers and heart-shaped leaves, perfect for trellises, fences, and arbors." class="image"><img src="images/thumbs/13.jpg" alt="Antigonon leptopus" /></a>
+                    <h2>Antigonon leptopus</h2>
+                    <p>A vigorous tropical climbing vine featuring cascading clusters of vibrant pink flowers and heart-shaped leaves, perfect for trellises, fences, and arbors.</p>
+                </article>
+
+                <article class="thumb">
+                    <a href="images/fulls/14.jpeg" title="&lt;strong&gt;Coccoloba uvifera&lt;/strong&gt;&lt;br&gt;A hardy coastal tree or shrub featuring large, leathery circular leaves and clusters of grape-like fruits, widely used for beach stabilization and tropical landscaping." class="image"><img src="images/thumbs/14.jpg" alt="Coccoloba uvifera" /></a>
+                    <h2>Coccoloba uvifera</h2>
+                    <p>A hardy coastal tree or shrub featuring large, leathery circular leaves and clusters of grape-like fruits, widely used for beach stabilization and tropical landscaping.</p>
+                </article>
+
+                <article class="thumb">
+                    <a href="images/fulls/15.jpeg" title="&lt;strong&gt;Persicaria capitata&lt;/strong&gt;&lt;br&gt;A charming prostrate perennial herb featuring distinct V-marked leaves and small, ball-like pink flower heads, widely used as an attractive ornamental groundcover." class="image"><img src="images/thumbs/15.jpg" alt="Persicaria capitata" /></a>
+                    <h2>Persicaria capitata</h2>
+                    <p>A charming prostrate perennial herb featuring distinct V-marked leaves and small, ball-like pink flower heads, widely used as an attractive ornamental groundcover.</p>
+                </article>
+
+                <article class="thumb">
+                    <a href="images/fulls/16.jpeg" title="&lt;strong&gt;Muehlenbeckia complexa&lt;/strong&gt;&lt;br&gt;A unique, tangling deciduous vine featuring slender dark wire-like stems and tiny rounded leaves, widely used for topiary, groundcover, or cascading over garden walls." class="image"><img src="images/thumbs/16.jpg" alt="Muehlenbeckia complexa" /></a>
+                    <h2>Muehlenbeckia complexa</h2>
+                    <p>A unique, tangling deciduous vine featuring slender dark wire-like stems and tiny rounded leaves, widely used for topiary, groundcover, or cascading over garden walls.</p>
+                </article>
+
+                <article class="thumb">
+                    <a href="images/fulls/17.jpeg" title="&lt;strong&gt;Fagopyrum esculentum&lt;/strong&gt;&lt;br&gt;An erect annual herb featuring distinctive heart-shaped leaves and dense clusters of small white flowers, widely cultivated as a highly nutritious pseudocereal." class="image"><img src="images/thumbs/17.jpg" alt="Fagopyrum esculentum" /></a>
+                    <h2>Fagopyrum esculentum</h2>
+                    <p>An erect annual herb featuring distinctive heart-shaped leaves and dense clusters of small white flowers, widely cultivated as a highly nutritious pseudocereal.</p>
+                </article>
+
+                <article class="thumb">
+                    <a href="images/fulls/18.jpeg" title="&lt;strong&gt;Homalocladium platycladum&lt;/strong&gt;&lt;br&gt;An extraordinary tropical shrub characterized by its flat, lime-green ribbon-like stems and jointed segments, widely grown as a striking architectural curiosity in gardens." class="image"><img src="images/thumbs/18.jpg" alt="Homalocladium platycladum" /></a>
+                    <h2>Homalocladium platycladum</h2>
+                    <p>An extraordinary tropical shrub characterized by its flat, lime-green ribbon-like stems and jointed segments, widely grown as a striking architectural curiosity in gardens.</p>
+                </article>
+
+                <article class="thumb">
+                    <a href="images/fulls/19.jpeg" title="&lt;strong&gt;Rumex acetosa&lt;/strong&gt;&lt;br&gt;A hardy perennial herb featuring large arrow-shaped leaves and tall spikes of reddish-green flowers, widely grown for both culinary and ornamental use." class="image"><img src="images/thumbs/19.jpg" alt="Rumex acetosa" /></a>
+                    <h2>Rumex acetosa</h2>
+                    <p>A hardy perennial herb featuring large arrow-shaped leaves and tall spikes of reddish-green flowers, widely grown for both culinary and ornamental use.</p>
+                </article>
+
+                <article class="thumb">
+                    <a href="images/fulls/20.jpeg" title="&lt;strong&gt;Persicaria odorata&lt;/strong&gt;&lt;br&gt;A perennial aromatic herb featuring dark green leaves with a distinct dark chevron." class="image"><img src="images/thumbs/20.jpg" alt="Persicaria odorata" /></a>
+                    <h2>Persicaria odorata</h2>
+                    <p>A perennial aromatic herb featuring dark green leaves with a distinct dark chevron.</p>
+                </article>
+
+                <article class="thumb">
+                    <a href="images/fulls/21.jpeg" title="&lt;strong&gt;Persicaria hydropiper (Water Pepper)&lt;/strong&gt;&lt;br&gt;A moisture-loving annual herb known for its pungent, spicy leaves. It is widely used in traditional herbal medicine." class="image"><img src="images/thumbs/21.jpg" alt="Persicaria hydropiper" /></a>
+                    <h2>Persicaria hydropiper (Water Pepper)</h2>
+                    <p>A moisture-loving annual herb known for its pungent, spicy leaves. It is widely used in traditional herbal medicine.</p>
+                </article>
+
+                <div class="section-divider-bar" id="acanthaceae-section" onclick="scrollToTop()">
+                    <h2>ACANTHACEAE FAMILY</h2>
+                    <p>An important tropical ornamental family with uniquely structured bracts <span>· Click to scroll to top ↑</span></p>
+                </div>
+
+                <article class="thumb">
+                    <a href="images/fulls/22.jpeg" title="&lt;strong&gt;Pseuderanthemum carruthersii (Purple False Eranthemum)&lt;/strong&gt;&lt;br&gt;A tropical evergreen shrub prized for its striking variegated foliage of deep purple, pink, and bronze tones." class="image"><img src="images/thumbs/22.jpg" alt="Pseuderanthemum carruthersii" /></a>
+                    <h2>Pseuderanthemum carruthersii (Purple False Eranthemum)</h2>
+                    <p>A tropical evergreen shrub prized for its striking variegated foliage of deep purple, pink, and bronze tones.</p>
+                </article>
+
+                <article class="thumb">
+                    <a href="images/fulls/23.jpeg" title="&lt;strong&gt;Aphelandra squarrosa (Zebra Plant)&lt;/strong&gt;&lt;br&gt;A tropical evergreen shrub native to Brazil, highly prized for its dramatic dark green leaves striped with vivid ivory-white veins. It also produces spikes of brilliant yellow flower bracts that can last for several weeks." class="image"><img src="images/thumbs/23.jpg" alt="Aphelandra squarrosa (Zebra Plant)" /></a>
+                    <h2>Aphelandra squarrosa (Zebra Plant)</h2>
+                    <p>A tropical evergreen shrub native to Brazil, highly prized for its dramatic dark green leaves striped with vivid ivory-white veins. It also produces spikes of brilliant yellow flower bracts that can last for several weeks.</p>
+                </article>
+
+                <article class="thumb">
+                    <a href="images/fulls/24.jpeg" title="&lt;strong&gt;Fittonia albivenis (Nerve Plant)&lt;/strong&gt;&lt;br&gt;It is deeply loved for its lush green foliage woven with contrasting, mosaic-like veins of white, red, or pink, thriving exceptionally well in high-humidity terrariums." class="image"><img src="images/thumbs/24.jpg" alt="Fittonia albivenis (Nerve Plant)" /></a>
+                    <h2>Fittonia albivenis (Nerve Plant)</h2>
+                    <p>It is deeply loved for its lush green foliage woven with contrasting, mosaic-like veins of white, red, or pink, thriving exceptionally well in high-humidity terrariums.</p>
+                </article>
+
+                <article class="thumb">
+                    <a href="images/fulls/25.jpeg" title="&lt;strong&gt;Acanthus mollis (Bear's Breeches)&lt;/strong&gt;&lt;br&gt;It features large, glossy, sculptural leaves and dramatic tall spikes of hooded white flowers nestled in purple bracts." class="image"><img src="images/thumbs/25.jpg" alt="Acanthus mollis (Bear's Breeches)" /></a>
+                    <h2>Acanthus mollis (Bear's Breeches)</h2>
+                    <p>It features large, glossy, sculptural leaves and dramatic tall spikes of hooded white flowers nestled in purple bracts.</p>
+                </article>
+
+                <article class="thumb">
+                    <a href="images/fulls/26.jpeg" title="&lt;strong&gt;Justicia carnea (Flamingo Flower)&lt;/strong&gt;&lt;br&gt;It is striking for its large, heavily-veined foliage and large, showy heads of curved, bright pink to crimson tubular flowers that resemble a cluster of plumes or feathers." class="image"><img src="images/thumbs/26.jpg" alt="Justicia carnea (Flamingo Flower)" /></a>
+                    <h2>Justicia carnea (Flamingo Flower)</h2>
+                    <p>It is striking for its large, heavily-veined foliage and large, showy heads of curved, bright pink to crimson tubular flowers that resemble a cluster of plumes or feathers.</p>
+                </article>
+
+                <article class="thumb">
+                    <a href="images/fulls/27.jpeg" title="&lt;strong&gt;Thunbergia erecta (King's Mantle)&lt;/strong&gt;&lt;br&gt;Unlike other vining species in its genus, it grows as a dense bush, producing a prolific display of velvety dark-blue or purple trumpet flowers highlighted by a contrasting yellow center." class="image"><img src="images/thumbs/27.jpg" alt="Thunbergia erecta (King's Mantle)" /></a>
+                    <h2>Thunbergia erecta (King's Mantle)</h2>
+                    <p>Unlike other vining species in its genus, it grows as a dense bush, producing a prolific display of velvety dark-blue or purple trumpet flowers highlighted by a contrasting yellow center.</p>
+                </article>
+
+                <article class="thumb">
+                    <a href="images/fulls/28.jpeg" title="&lt;strong&gt;Andrographis paniculata (King of Bitters)&lt;/strong&gt;&lt;br&gt;Dubbed the &quot;King of Bitters,&quot; every part of the plant features an extraordinarily bitter profile due to andrographolide compounds." class="image"><img src="images/thumbs/28.jpg" alt="Andrographis paniculata (King of Bitters)" /></a>
+                    <h2>Andrographis paniculata (King of Bitters)</h2>
+                    <p>Dubbed the "King of Bitters," every part of the plant features an extraordinarily bitter profile due to andrographolide compounds.</p>
+                </article>
+
+                <article class="thumb">
+                    <a href="images/fulls/29.jpeg" title="&lt;strong&gt;Asystasia gangetica (Chinese Violet)&lt;/strong&gt;&lt;br&gt;A vigorous, spreading tropical perennial herb native to Afro-Eurasia. It bears attractive, creamy-white or light violet bell-shaped flowers aligned on one side of the stem." class="image"><img src="images/thumbs/29.jpg" alt="Asystasia gangetica (Chinese Violet)" /></a>
+                    <h2>Asystasia gangetica (Chinese Violet)</h2>
+                    <p>A vigorous, spreading tropical perennial herb native to Afro-Eurasia. It bears attractive, creamy-white or light violet bell-shaped flowers aligned on one side of the stem.</p>
+                </article>
+
+                <article class="thumb">
+                    <a href="images/fulls/30.jpeg" title="&lt;strong&gt;Odontonema tubaeforme (Firespike)&lt;/strong&gt;&lt;br&gt;It features large, glossy, wavy-edged leaves and produces upright, dramatic spikes packed with bright crimson, tubular flowers that bloom reliably from late summer through winter, acting as a magnet for pollinators." class="image"><img src="images/thumbs/30.jpg" alt="Odontonema tubaeforme (Firespike)" /></a>
+                    <h2>Odontonema tubaeforme (Firespike)</h2>
+                    <p>It features large, glossy, wavy-edged leaves and produces upright, dramatic spikes packed with bright crimson, tubular flowers that bloom reliably from late summer through winter, acting as a magnet for pollinators.</p>
+                </article>
+
+            </div>
+
+            <section id="contact">
+                <div class="contact-inner">
+                    <header class="contact-header">
+                        <h2>Contact Us</h2>
+                        <p>Get in touch for instant quotes or visit our physical store.</p>
+                    </header>
+                    <div class="contact-body">
+                        <div class="contact-info">
+                            <ul>
+                                <li>
+                                    <strong><i class="icon solid fa-map-marker-alt"></i> Physical Store Address:</strong><br />
+                                    Lot 1748, Plt 59, Jln Kg Lubok Tengah Semerah<br />
+                                    Batu Pahat, Johor, Malaysia
+                                </li>
+                                <li>
+                                    <strong><i class="icon solid fa-clock"></i> Operating Hours:</strong><br />
+                                    Monday to Friday: 9:00 AM &ndash; 6:00 PM
+                                </li>
+                            </ul>
+                            <a href="https://wa.me/60123456789" target="_blank" class="button primary icon brands fa-whatsapp btn-whatsapp">WhatsApp Quick Contact / Inquiry</a>
+                        </div>
+                        <div class="contact-map">
+                            <iframe
+                                title="Google Maps &mdash; Batu Pahat, Johor"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127608.06456094628!2d102.85590924999999!3d1.85489725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d04423b497b771%3A0xc638bbda892d34!2sBatu%20Pahat%2C%20Johor%2C%20Malaysia!5e0!3m2!1sen!2smy!4v1650000000000!5m2!1sen!2smy"
+                                allowfullscreen=""
+                                loading="lazy">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <footer id="footer">
+                <ul class="icons">
+                    <li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+                    <li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+                    <li><a href="#" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+                    <li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+                    <li><a href="#" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
+                </ul>
+                <ul class="copyright">
+                    <li>&copy; B2B Wholesale. All rights reserved.</li>
+                    <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                </ul>
+            </footer>
+
+            <div id="speciesEditorModal" class="species-editor-modal">
+                <div class="species-editor-card">
+                    <h3>Edit Species</h3>
+                    <input type="hidden" id="speciesEditIndex" />
+                    <label for="speciesEditTitle">Species Name</label>
+                    <input type="text" id="speciesEditTitle" />
+                    <label for="speciesEditDescription">Description</label>
+                    <textarea id="speciesEditDescription"></textarea>
+                    <label for="speciesEditFullImage">Full Image Path</label>
+                    <input type="text" id="speciesEditFullImage" />
+                    <label for="speciesEditThumbImage">Thumbnail Image Path</label>
+                    <input type="text" id="speciesEditThumbImage" />
+                    <ul class="species-editor-actions">
+                        <li><button type="button" class="button" onclick="closeSpeciesEditor()">Cancel</button></li>
+                        <li><button type="button" class="button primary" onclick="saveSpeciesEdit()">Save Changes</button></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.poptrox.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script>
+            (function($) {
+
+                var $window  = $(window),
+                    $body    = $('body'),
+                    $main    = $('#main');
+
+                breakpoints({
+                    xlarge: ['1281px', '1680px'],
+                    large:  ['981px',  '1280px'],
+                    medium: ['737px',  '980px' ],
+                    small:  ['481px',  '736px' ],
+                    xsmall: [null,     '480px' ]
+                });
+
+                if (browser.name == 'ie')  $body.addClass('ie');
+                if (browser.mobile)        $body.addClass('touch');
+
+                if (browser.canUse('transition')) {
+                    $window.on('load', function() {
+                        window.setTimeout(function() { $body.removeClass('is-preload'); }, 100);
+                    });
+
+                    var resizeTimeout;
+                    $window.on('resize', function() {
+                        window.clearTimeout(resizeTimeout);
+                        $body.addClass('is-resizing');
+                        resizeTimeout = window.setTimeout(function() { $body.removeClass('is-resizing'); }, 100);
+                    });
+                }
+
+                $window.scrollTop(0);
+
+                $('#header').find('a').each(function() {
+                    var $this = $(this), href = $this.attr('href');
+                    if (!href || href.charAt(0) == '#') return;
+                    $this.removeAttr('href').css('cursor', 'pointer').on('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        window.location.href = href;
+                    });
+                });
+
+                $main.children('.thumb').each(function() {
+                    var $this  = $(this),
+                        $image = $this.find('.image'),
+                        $img   = $image.children('img'),
+                        pos;
+
+                    if ($image.length == 0) return;
+
+                    $image.css('background-image', 'url(' + $img.attr('src') + ')');
+                    if (pos = $img.data('position')) $image.css('background-position', pos);
+                    $img.hide();
+                });
+
+                $main.poptrox({
+                    baseZIndex: 20000,
+                    caption: function($a) {
+                        var s = '';
+                        $a.nextAll().each(function() { s += this.outerHTML; });
+                        return s;
+                    },
+                    fadeSpeed: 300,
+                    onPopupClose: function() { $body.removeClass('modal-active'); },
+                    onPopupOpen:  function() { $body.addClass('modal-active'); },
+                    overlayOpacity: 0,
+                    popupCloserText: '',
+                    popupHeight: 150,
+                    popupLoaderText: '',
+                    popupSpeed: 300,
+                    popupWidth: 150,
+                    selector: '.thumb > a.image',
+                    usePopupCaption: true,
+                    usePopupCloser: true,
+                    usePopupDefaultStyling: false,
+                    usePopupForceClose: true,
+                    usePopupLoader: true,
+                    usePopupNav: true,
+                    windowMargin: 50
+                });
+
+                breakpoints.on('<=xsmall', function() { $main[0]._poptrox.windowMargin = 0; });
+                breakpoints.on('>xsmall',  function() { $main[0]._poptrox.windowMargin = 50; });
+
+            })(jQuery);
+
+            function scrollToTop() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            function filterCategory(sectionId) {
+                var children  = document.getElementById('main').children;
+                var inSection = false;
+
+                for (var i = 0; i < children.length; i++) {
+                    var child = children[i];
+                    if (child.classList.contains('horizontal-nav-bar')) continue;
+
+                    if (child.classList.contains('section-divider-bar')) {
+                        inSection = child.id === sectionId;
+                        child.style.display = inSection ? 'block' : 'none';
+                    } else if (child.tagName.toLowerCase() === 'article') {
+                        child.style.display = inSection ? 'block' : 'none';
+                    }
+                }
+            }
+
+            (function() {
+                function unlockPage() {
+                    document.body.classList.remove('is-preload');
+                    document.body.classList.add('force-ready');
+                    document.querySelectorAll('#main article.thumb').forEach(function(el) {
+                        el.classList.add('force-show');
+                    });
+                }
+                window.addEventListener('DOMContentLoaded', unlockPage);
+                window.addEventListener('load', unlockPage);
+            })();
+
+            var speciesEditKey = 'annYangSpeciesEdits';
+
+            function getActiveUser() {
+                try {
+                    return JSON.parse(sessionStorage.getItem('activeUser'));
+                } catch (error) {
+                    return null;
+                }
+            }
+
+            function getSpeciesEdits() {
+                try {
+                    return JSON.parse(localStorage.getItem(speciesEditKey)) || {};
+                } catch (error) {
+                    return {};
+                }
+            }
+
+            function saveSpeciesEdits(edits) {
+                localStorage.setItem(speciesEditKey, JSON.stringify(edits));
+            }
+
+            function escapeSpeciesText(value) {
+                return String(value || '')
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#39;');
+            }
+
+            function getSpeciesArticles() {
+                return Array.prototype.slice.call(document.querySelectorAll('#main article.thumb'));
+            }
+
+            function applySpeciesData(article, data) {
+                var link = article.querySelector('a.image');
+                var image = article.querySelector('img');
+                var title = article.querySelector('h2');
+                var description = article.querySelector('p');
+
+                if (data.title) {
+                    title.textContent = data.title;
+                    if (image) image.alt = data.title;
+                }
+
+                if (data.description) {
+                    description.textContent = data.description;
+                }
+
+                if (data.fullImage && link) {
+                    link.setAttribute('href', data.fullImage);
+                }
+
+                if (data.thumbImage && image) {
+                    image.setAttribute('src', data.thumbImage);
+                    link.style.backgroundImage = 'url(' + data.thumbImage + ')';
+                }
+
+                if (link) {
+                    link.setAttribute('title', '<strong>' + escapeSpeciesText(title.textContent) + '</strong><br>' + escapeSpeciesText(description.textContent));
+                }
+            }
+
+            function loadSpeciesEdits() {
+                var edits = getSpeciesEdits();
+                getSpeciesArticles().forEach(function(article, index) {
+                    if (edits[index]) {
+                        applySpeciesData(article, edits[index]);
+                    }
+                });
+            }
+
+            function openSpeciesEditor(index) {
+                var article = getSpeciesArticles()[index];
+                var link = article.querySelector('a.image');
+                var image = article.querySelector('img');
+
+                document.getElementById('speciesEditIndex').value = index;
+                document.getElementById('speciesEditTitle').value = article.querySelector('h2').textContent.trim();
+                document.getElementById('speciesEditDescription').value = article.querySelector('p').textContent.trim();
+                document.getElementById('speciesEditFullImage').value = link ? link.getAttribute('href') : '';
+                document.getElementById('speciesEditThumbImage').value = image ? image.getAttribute('src') : '';
+                document.getElementById('speciesEditorModal').classList.add('active');
+            }
+
+            function closeSpeciesEditor() {
+                document.getElementById('speciesEditorModal').classList.remove('active');
+            }
+
+            function saveSpeciesEdit() {
+                var index = document.getElementById('speciesEditIndex').value;
+                var edits = getSpeciesEdits();
+                var data = {
+                    title: document.getElementById('speciesEditTitle').value.trim(),
+                    description: document.getElementById('speciesEditDescription').value.trim(),
+                    fullImage: document.getElementById('speciesEditFullImage').value.trim(),
+                    thumbImage: document.getElementById('speciesEditThumbImage').value.trim()
+                };
+
+                edits[index] = data;
+                saveSpeciesEdits(edits);
+                applySpeciesData(getSpeciesArticles()[index], data);
+                closeSpeciesEditor();
+            }
+
+            function setupSpeciesEditor() {
+                var activeUser = getActiveUser();
+                var navBtn = document.getElementById('nav-account-btn');
+
+                if (navBtn && activeUser) {
+                    navBtn.textContent = 'Account';
+                }
+
+                loadSpeciesEdits();
+
+                if (!activeUser || activeUser.role !== 'Admin') {
+                    document.body.classList.remove('admin-species-mode');
+                    return;
+                }
+
+                document.body.classList.add('admin-species-mode');
+
+                getSpeciesArticles().forEach(function(article, index) {
+                    if (article.querySelector('.species-edit-button')) {
+                        return;
+                    }
+
+                    var button = document.createElement('button');
+                    button.type = 'button';
+                    button.className = 'button primary species-edit-button';
+                    button.textContent = 'Edit';
+                    button.addEventListener('click', function(event) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        openSpeciesEditor(index);
+                    });
+                    article.appendChild(button);
+                });
+            }
+
+            document.addEventListener('DOMContentLoaded', setupSpeciesEditor);
+        </script>
+
+    </body>
+</html>
